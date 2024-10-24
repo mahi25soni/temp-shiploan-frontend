@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Heading from "../atoms/heading";
+import MainHeading from "../atoms/MainHeading";
 import { BlogSampleData } from "@/testdata/blog-data";
 import Image from "next/image";
 
@@ -45,7 +45,7 @@ const BlogListing = () => {
   }, []);
   return (
     <div className="lg:pl-[152px]">
-      <Heading heading="Learn more ways to save" />
+      <MainHeading heading="Learn more ways to save" />
       <div className="mt-10 pl-8 scrollbar-hidden flex flex-row w-full items-center justify-start gap-8 overflow-auto lg:pl-0">
         {blogDataArray?.map((blog, index) => {
           return (

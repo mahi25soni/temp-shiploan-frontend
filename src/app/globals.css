@@ -42,3 +42,9 @@ body,
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+.description-text {
+  font-size: 14px;
+  color : black;
+  line-height: 21.78px;
+}

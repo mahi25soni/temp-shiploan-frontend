@@ -4,10 +4,10 @@ interface HeadingProps {
   heading: string;
   align?: "left" | "center" | "right";
 }
-const Heading = (data: HeadingProps) => {
+const MainHeading = (data: HeadingProps) => {
   return (
     <div
-      className="xl:leading[72px] text-center text-[32px] font-bold leading-[48px] xl:text-left xl:text-[48px]"
+      className="lg:leading-[72px] text-center text-[32px] font-bold leading-[48px] lg:text-left lg:text-[48px]"
       style={{
         textAlign: data?.align,
       }}
@@ -17,4 +17,4 @@ const Heading = (data: HeadingProps) => {
   );
 };
 
-export default Heading;
+export default MainHeading;
