@@ -28,7 +28,8 @@ const HomePageComponentWrapper = (data: HomePageComponentWrapperProps) => {
             alt="hero-image"
           />
         </div>
-        <div className="flex flex-col gap-10 w-[500px] h-full items-center lg:items-start">
+        <div className="flex flex-col gap-10 lg:w-[500px] h-full items-center lg:items-start">
+
           <MainHeading heading={data?.heading} />
           <div className="description-text line-clamp-4 hidden lg:block">
             {data?.description}
