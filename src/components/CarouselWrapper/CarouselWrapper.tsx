@@ -1,14 +1,16 @@
 "use client";
+import { CarouselSampleData } from "@/testdata/carousel-data";
 import Image from "next/image";
 import React, { useState } from "react";
 
-const slides = [
-  "Slide 1: We can write anything here",
-  "Slide 2: We can write anything here two",
-  "Slide 3: We can write anything here three",
-  "Slide 4: We can write anything here",
-  "Slide 5: We can write anything here",
-];
+interface SlideDataInterface {
+    title: string;
+    desc: string;
+    bgImage : string;
+    bgColor: string;
+}
+
+const slides : SlideDataInterface[] = CarouselSampleData
 
 const CarouselWrapper = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -21,18 +23,23 @@ const CarouselWrapper = () => {
     setActiveSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
+  console.log("asl;fj;lsfdjsdkf ", slides[activeSlide])
+
   return (
-    <div className="relative h-[915px] w-full bg-gradient-to-b from-light-skin to-white/70 text-black md:h-[970px]">
-      <div className="absolute left-1/2 top-20 m-auto h-[400px] w-[303px] -translate-x-1/2 transform lg:hidden">
+    <div   className="relative h-[915px] w-full text-black md:h-[970px]"
+  style={{
+    background: `linear-gradient(to bottom, ${slides[activeSlide]?.bgColor}, rgba(255, 255, 255, 0.7))`
+  }}>
+      <div className="absolute left-1/2 top-20 m-auto h-[400px] w-[350px] -translate-x-1/2 transform lg:hidden">
         <Image
-          src="/money and pie chart.png"
+          src={slides[activeSlide]?.bgImage}
           alt="money and pie chart"
           fill
-          className="h-full w-full object-cover"
+          className="h-full w-full object-fit"
         />
       </div>
       <div className="relative h-full w-full overflow-hidden rounded-lg md:h-full">
-        {slides.map((slide, index) => (
+        {slides?.map((slide, index) => (
           <div
             key={index}
             className={`absolute inset-0 top-40 flex items-center justify-center transition-opacity duration-700 ease-in-out ${
@@ -41,15 +48,10 @@ const CarouselWrapper = () => {
           >
             <div className="flex h-[300px] w-[334px] flex-col items-start justify-start gap-6 rounded-32 border border-basic bg-white p-5 text-center lg:col-span-6 lg:h-max lg:w-[494px] lg:text-left xl:col-span-5">
               <div className="line-clamp-2 text-[32px] font-bold leading-[48px] lg:text-[48px] lg:leading-[72px]">
-                Turn your debts into saving
+                {slide?.title}
               </div>
               <div className="line-clamp-3 text-[18px] leading-5 lg:line-clamp-none">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Temporibus omnis tenetur impedit, a corporis quidem! Inventore
-                vitae reiciendis nisi labore quibusdam excepturi placeat
-                voluptas earum cum blanditiis, ipsum eos minus iure, asperiores
-                similique et atque voluptates fugit nesciunt in commodi ipsa.
-                Porro, et. Expedita vitae nemo nostrum ipsa velit quia.
+                    {slide?.desc}
               </div>
               <button className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange lg:w-[238px]">
                 Start Saving
@@ -57,10 +59,11 @@ const CarouselWrapper = () => {
             </div>
             <div className="relative hidden h-full w-full lg:col-span-6 lg:block lg:h-3/4 xl:col-span-7 xl:h-full">
               <Image
-                src="/money and pie chart.png"
+                src={slide?.bgImage}
                 alt="money and pie chart"
+
                 fill
-                className="h-full w-full object-cover"
+                className="h-full w-full object-fit"
               />
             </div>
           </div>
