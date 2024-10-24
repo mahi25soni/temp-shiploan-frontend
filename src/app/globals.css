@@ -18,3 +18,20 @@ body,
   width: 100%;
 }
 
+
+:root {
+  --bg-light-skin : #FBEED9;
+  --bg-light-purple : #FDEFF0;
+  --bg-light-green : #D1E6DF;
+  --bg-light-blue : #D5E8ED;
+
+  --yellow-orange : #FBAE17;
+  --light-black : #48454C;
+
+  --range-line : #AD87DF;
+  --range-text : #825FAF;
+  --light-range : #F0E9FB;
+
+  --light-gray : #48454C;
+}
+
