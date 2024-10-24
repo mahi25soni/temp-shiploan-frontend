@@ -37,3 +37,8 @@ body,
   --border-basic : #F0E9FB;
 }
 
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
