@@ -1,14 +1,15 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
-const NavbarTabs: string[] = [
-  "Home",
-  "Debt Consolidation",
-  "Home Loan",
-  "Credit Card Debt",
-  "Student Loan",
-  "Blogs",
+const NavbarItems: { [key: string]: string }[] = [
+  { tab: "Home", link: "/" },
+  { tab: "Debt Consolidation", link: "/debt-consolidation" },
+  { tab: "Home Loan", link: "/home-loan" },
+  { tab: "Credit Card Debt", link: "/creditcard-loan" },
+  { tab: "Student Loan", link: "/student-loan" },
+  // { tab: "Blogs", link: "/blogs" }
 ];
 
 const Navbar = () => {
@@ -29,15 +30,17 @@ const Navbar = () => {
             alt="logo"
           />
         </div>
-        {NavbarTabs?.map((tab: string, index) => {
+        {NavbarItems?.map((item, index) => {
           return (
-            <div
-              key={index}
-              onClick={() => handleSelectTab(tab)}
-              className={`hidden cursor-pointer text-base lg:block ${selectedTab === tab ? "font-bold" : "font-normal"}`}
-            >
-              {tab}
-            </div>
+            <Link key={index} href={item?.link} passHref>
+              <div
+                key={index}
+                onClick={() => handleSelectTab(item?.tab)}
+                className={`hidden cursor-pointer text-base lg:block ${selectedTab === item?.tab ? "font-bold" : "font-normal"}`}
+              >
+                {item?.tab}
+              </div>
+            </Link>
           );
         })}
         <div></div>

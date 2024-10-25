@@ -43,8 +43,14 @@ body,
   -ms-overflow-style: none;
 }
 
-.description-text {
+.description-text-14 {
   font-size: 14px;
+  color : black;
+  line-height: 21.78px;
+}
+
+.description-text-18 {
+  font-size: 18px;
   color : black;
   line-height: 21.78px;
 }
