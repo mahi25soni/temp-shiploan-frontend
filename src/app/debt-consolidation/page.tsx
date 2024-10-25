@@ -10,18 +10,24 @@ const InputRangeData = [
     label : 'Amount',
     minValue : 0,
     maxValue : 100000, // In Rupees
+    step : 1000,
+    type : "currency"
   },
   {
     name : 'payment',
     label : 'Payment',
     minValue : 0,
     maxValue : 18, // In months
+    step : 1,
+    type : "time"
   },
   {
     name : 'interest',
     label : 'Interest',
     minValue : 0,
     maxValue : 15, // In Percentage
+    step : 0.1,
+    type : "percentage"
   }
 ]
 
