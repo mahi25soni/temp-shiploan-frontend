@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "flowbite": "^2.5.2",
+    "formik": "^2.4.6",
     "next": "15.0.1",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "react": "19.0.0-rc-69d4b800-20241021",
