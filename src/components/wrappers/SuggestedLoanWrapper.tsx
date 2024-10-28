@@ -11,7 +11,7 @@ interface SuggestedLoanWrapperProps {
 const SuggestedLoanWrapper = (data: SuggestedLoanWrapperProps ) => {
   return (
     <div
-    className="m-auto flex  lg:h-[1192px] h-[852px] w-full flex-row items-center justify-start"
+    className="m-auto flex  lg:h-[1192px] h-full w-full  flex-row items-center justify-start"
     style={{
       background: `${data?.bgColor}`,
     }}

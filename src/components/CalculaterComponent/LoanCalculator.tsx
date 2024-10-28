@@ -29,7 +29,7 @@ const LoanCalculator = (data : LoanCalculatorProps) => {
           return <InputRange key={index} SingleInputData={item} formik={data?.formik}/>
         })}
       </div>
-      <button className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange lg:w-[238px]">
+      <button className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange lg:w-[238px]" onClick={() => data?.formik?.handleSubmit()}>
         Start Saving
       </button>
     </div>
