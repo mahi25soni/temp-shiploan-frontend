@@ -1,6 +1,7 @@
 "use client";
 import LoanCalculator from '@/components/CalculaterComponent/LoanCalculator'
 import SuggestedLoan from '@/components/SuggestedLoan/SuggestedLoan';
+import SuggestedLenders from '@/components/SuggestesLenders/SuggestedLenders';
 import PageWrapper from '@/components/wrappers/PageWrapper'
 import SuggestedLoanWrapper from '@/components/wrappers/SuggestedLoanWrapper';
 import { useFormik } from 'formik'
@@ -74,14 +75,16 @@ const StudentLoan = () => {
     },
   })
   return (
-    suggestLoan ? (<SuggestedLoanWrapper altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.png'>
-      <SuggestedLoan {...suggestedLoanData}></SuggestedLoan>
+    // suggestLoan ? (<SuggestedLoanWrapper altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.png'>
+    //   <SuggestedLoan {...suggestedLoanData}></SuggestedLoan>
 
-    </SuggestedLoanWrapper>) : (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+    // </SuggestedLoanWrapper>) : (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
-      <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
+    //   <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
 
-    </PageWrapper>)
+    // </PageWrapper>)
+
+    <SuggestedLenders bgColor='#FBEED9'/>
 
   );
 };
