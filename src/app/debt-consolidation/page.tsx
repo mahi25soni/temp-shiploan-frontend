@@ -48,7 +48,6 @@ const DebtConsolidation = () => {
       interest: 0,
     },
     onSubmit: (values) => {
-      console.log("the button has been clicked")
       setSuggestedLoanData({
         amount: values.amount,
         tenure: values.payment,
