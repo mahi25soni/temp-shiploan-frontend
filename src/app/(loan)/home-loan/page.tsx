@@ -1,5 +1,6 @@
 "use client";
 import LoanCalculator from '@/components/CalculaterComponent/LoanCalculator'
+import LenderComparison from '@/components/LenderComparison/LenderComparison';
 import SuggestedLoan from '@/components/SuggestedLoan/SuggestedLoan';
 import SuggestedLenders from '@/components/SuggestesLenders/SuggestedLenders';
 import PageWrapper from '@/components/wrappers/PageWrapper'
@@ -83,6 +84,7 @@ const HomeLoan = () => {
 
       </PageWrapper>)
       <SuggestedLenders ></SuggestedLenders>
+      <LenderComparison ></LenderComparison>
     </div>
 
   );

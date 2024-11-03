@@ -10,6 +10,12 @@ const SuggestedLenders = () => {
             className="m-auto flex h-full w-full flex-col  items-center justify-start gap-6 lg:px-[200px]"
         >
 
+            <div className='shadow-[0_2px_8px_rgba(0,0,0,0.25)] p-6 flex flex-col lg:hidden rounded-2xl w-[353px] bg-white gap-2'>
+                <div className='flex items-center'>
+
+                </div>
+                <div></div>
+            </div>
             <div className='flex items-center justify-between w-[353px] lg:w-full'>
                 <div className='font-bold text-base lg:text-5xl lg:leading-[60px]'>
                     Suggested Lenders
