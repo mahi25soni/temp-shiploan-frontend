@@ -4,6 +4,7 @@ interface SuggestedLoanProps {
     amount : number,
     tenure : number,
     roi : number,
+    setSuggestedLenders: (value: any) => void;
 }
 
 const SuggestedLoan = (data: SuggestedLoanProps) => {
@@ -45,7 +46,7 @@ const SuggestedLoan = (data: SuggestedLoanProps) => {
         <div className='border border-[#33333326] w-full'></div>
 
         <div className='flex flex-col gap-4 '>
-        <button className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange border border-light-gray  leading-[21.78px]">
+        <button className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange border border-light-gray  leading-[21.78px]" onClick={() => data?.setSuggestedLenders(true)}>
                 Reduce Debt
               </button>
               <button className="w-full rounded-32 bg-transparent p-4 text-[18px] font-bold text-light-gray border border-light-gray  leading-[21.78px]">

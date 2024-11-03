@@ -1,8 +1,11 @@
 "use client";
 import LoanCalculator from '@/components/CalculaterComponent/LoanCalculator'
+import LenderComparison from '@/components/LenderComparison/LenderComparison';
 import SuggestedLoan from '@/components/SuggestedLoan/SuggestedLoan';
+import SuggestedLenders from '@/components/SuggestesLenders/SuggestedLenders';
 import PageWrapper from '@/components/wrappers/PageWrapper'
 import SuggestedLoanWrapper from '@/components/wrappers/SuggestedLoanWrapper';
+import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 
@@ -49,8 +52,18 @@ const InputRangeData = [
   }
 ]
 
+interface LenderInfo {
+  id: string,
+  name: string,
+  roi: string,
+  amount: string,
+  eligibility: string,
+  disbursement: string
+}
+
 const CreditCardLoan = () => {
   const [suggestLoan, setSuggestLoan] = useState(false)
+  const [suggestLenders, setSuggestLenders] = useState(false)
   const [suggestedLoanData, setSuggestedLoanData] = useState({
     amount: 0,
     tenure: 0,
@@ -73,15 +86,20 @@ const CreditCardLoan = () => {
       setSuggestLoan(true)
     },
   })
+  const [lenderComparisonArray, setLenderComparisonArray] = useState([])
+  const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
   return (
-    suggestLoan ? <SuggestedLoanWrapper altText='Background Image' bgColor='#D5E8ED' mainImage='/credit cards.png' >
 
-      <SuggestedLoan {...suggestedLoanData}></SuggestedLoan>
-    </SuggestedLoanWrapper> : (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#D5E8ED' mainImage='/credit cards.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+    < div className='min-h-screen w-full bg-light-blue' >
+      (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#D5E8ED' mainImage='/credit cards.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
-      <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
+        <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
+        {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
-    </PageWrapper>)
+      </PageWrapper>)
+      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} />}
+      <LenderComparison ></LenderComparison>
+    </div >
 
   );
 };

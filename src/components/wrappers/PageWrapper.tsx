@@ -13,9 +13,7 @@ interface PageWrapperProps {
 
 const PageWrapper = (data: PageWrapperProps) => {
   return (
-    // <div
-    //   className="flex flex-row items-center justify-start lg:items-start"
-    // >
+
       <div className="flex w-full  flex-col items-center gap-10 justify-start  lg:flex-row lg:justify-between lg:gap-20 lg:mt-[125px] lg:items-start lg:px-[200px] lg:py-[100px]">
         <div className="relative min-h-[292px] w-[282px] lg:h-[544px] lg:w-[526px] lg:hidden">
           <Image
@@ -40,7 +38,6 @@ const PageWrapper = (data: PageWrapperProps) => {
           {data?.children}
         </div>
       </div>
-    // </div>
   );
 };
 

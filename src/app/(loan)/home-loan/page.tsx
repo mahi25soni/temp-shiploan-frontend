@@ -53,7 +53,7 @@ const InputRangeData = [
 ]
 
 interface LenderInfo {
-  id : string,
+  id: string,
   name: string,
   roi: string,
   amount: string,
@@ -63,6 +63,7 @@ interface LenderInfo {
 
 const HomeLoan = () => {
   const [suggestLoan, setSuggestLoan] = useState(false)
+  const [suggestLenders, setSuggestLenders] = useState(false)
   const [suggestedLoanData, setSuggestedLoanData] = useState({
     amount: 0,
     tenure: 0,
@@ -91,13 +92,13 @@ const HomeLoan = () => {
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
   return (
     <div className='min-h-screen w-full bg-light-green'>
-      (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+      (<PageWrapper heading='Balance Transfer on a Home Loan' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
         <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
-        {suggestLoan && <SuggestedLoan {...suggestedLoanData} />}
+        {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
       </PageWrapper>)
-      <SuggestedLenders lenderArray = {lenderArray}  ></SuggestedLenders>
+      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} />}
       <LenderComparison ></LenderComparison>
     </div>
 

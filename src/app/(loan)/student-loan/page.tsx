@@ -1,9 +1,11 @@
 "use client";
 import LoanCalculator from '@/components/CalculaterComponent/LoanCalculator'
+import LenderComparison from '@/components/LenderComparison/LenderComparison';
 import SuggestedLoan from '@/components/SuggestedLoan/SuggestedLoan';
 import SuggestedLenders from '@/components/SuggestesLenders/SuggestedLenders';
 import PageWrapper from '@/components/wrappers/PageWrapper'
 import SuggestedLoanWrapper from '@/components/wrappers/SuggestedLoanWrapper';
+import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 
@@ -50,8 +52,20 @@ const InputRangeData = [
   }
 ]
 
+
+interface LenderInfo {
+  id: string,
+  name: string,
+  roi: string,
+  amount: string,
+  eligibility: string,
+  disbursement: string
+}
+
 const StudentLoan = () => {
   const [suggestLoan, setSuggestLoan] = useState(false)
+  const [suggestLenders, setSuggestLenders] = useState(false)
+
   const [suggestedLoanData, setSuggestedLoanData] = useState({
     amount: 0,
     tenure: 0,
@@ -74,17 +88,19 @@ const StudentLoan = () => {
       setSuggestLoan(true)
     },
   })
+  const [lenderComparisonArray, setLenderComparisonArray] = useState([])
+  const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
   return (
-    // suggestLoan ? (<SuggestedLoanWrapper altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.png'>
-    //   <SuggestedLoan {...suggestedLoanData}></SuggestedLoan>
+    <div className='min-h-screen w-full bg-light-skin'>
+      (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
-    // </SuggestedLoanWrapper>) : (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+        <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
+        {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
-    //   <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
-
-    // </PageWrapper>)
-
-    <SuggestedLenders bgColor='#FBEED9'/>
+      </PageWrapper>)
+      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} />}
+      <LenderComparison ></LenderComparison>
+    </div>
 
   );
 };
