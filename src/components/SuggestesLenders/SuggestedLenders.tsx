@@ -9,11 +9,14 @@ interface LenderInfo {
     roi: string,
     amount: string,
     eligibility: string,
-    disbursement: string
+    disbursement: string,
+
 }
 
 interface props {
-    lenderArray: LenderInfo[]
+    lenderArray: LenderInfo[],
+    setLenderComparisonArray : (value : any) => void;
+    setLenderComparison : (value : any) => void;
 }
 
 
@@ -21,7 +24,6 @@ const SuggestedLenders = (data: props) => {
     const [firstLenderCandidate, setFirstLenderCandidate] = useState<LenderInfo | null>(null)
     const [secondLenderCandidate, setSecondLenderCandidate] = useState<LenderInfo | null>(null)
 
-    const [twoLenderCandiates, setTwoLenderCandiates] = useState<LenderInfo[]>([])
 
 
     const handleAddToCompare = (lender: LenderInfo) => {
@@ -32,6 +34,11 @@ const SuggestedLenders = (data: props) => {
         else if (secondLenderCandidate === null) {
             setSecondLenderCandidate(lender)
         }
+    }
+
+    const compareLenders = () => {
+        data.setLenderComparisonArray([firstLenderCandidate, secondLenderCandidate])
+        data.setLenderComparison(true)
     }
     return (
         <div
@@ -50,7 +57,7 @@ const SuggestedLenders = (data: props) => {
                             {secondLenderCandidate ? secondLenderCandidate["name"] : <Image src='/PlusCircle.svg' width={18} height={18} alt="Add Button" className='rounded-full' />}
                         </div>
                     </div>
-                    <button disabled={secondLenderCandidate ? false : true} className={` p-4 rounded-32 border   w-full description-text-18 font-bold  ${secondLenderCandidate ? 'border-light-gray text-light-gray' : 'border-gray-opacity-20 text-gray-opacity-20'}`}>
+                    <button disabled={secondLenderCandidate ? false : true} onClick={compareLenders} className={` p-4 rounded-32 border   w-full description-text-18 font-bold  ${secondLenderCandidate ? 'border-light-gray text-light-gray' : 'border-gray-opacity-20 text-gray-opacity-20'}`}>
                         Compare
                     </button>
                 </div>

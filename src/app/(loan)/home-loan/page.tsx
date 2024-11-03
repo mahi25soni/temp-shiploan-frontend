@@ -64,6 +64,7 @@ interface LenderInfo {
 const HomeLoan = () => {
   const [suggestLoan, setSuggestLoan] = useState(false)
   const [suggestLenders, setSuggestLenders] = useState(false)
+  const [lenderComparison, setLenderComparison] = useState(false)
   const [suggestedLoanData, setSuggestedLoanData] = useState({
     amount: 0,
     tenure: 0,
@@ -88,7 +89,7 @@ const HomeLoan = () => {
 
   })
 
-  const [lenderComparisonArray, setLenderComparisonArray] = useState([])
+  const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>([])
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
   return (
     <div className='min-h-screen w-full bg-light-green'>
@@ -98,8 +99,8 @@ const HomeLoan = () => {
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
       </PageWrapper>)
-      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} />}
-      <LenderComparison ></LenderComparison>
+      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison}/>}
+      {lenderComparison && lenderComparisonArray?.length > 1 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
     </div>
 
   );
