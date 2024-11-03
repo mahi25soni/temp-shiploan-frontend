@@ -74,13 +74,14 @@ const HomeLoan = () => {
     },
   })
   return (
-    suggestLoan ? (<SuggestedLoanWrapper altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.png'>
+    <div className='min-h-screen w-full bg-light-green'>
+      (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
-      <SuggestedLoan {...suggestedLoanData}></SuggestedLoan>
-    </SuggestedLoanWrapper>) : (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+        <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
+        {suggestLoan && <SuggestedLoan {...suggestedLoanData} />}
 
-      <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
-    </PageWrapper>)
+      </PageWrapper>)
+    </div>
 
   );
 };

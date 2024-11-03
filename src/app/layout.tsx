@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="relative"
+        className="relative h-full min-h-screen"
       >
         <Navbar />
         {children}

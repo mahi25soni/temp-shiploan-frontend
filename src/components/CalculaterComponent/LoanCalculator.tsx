@@ -20,7 +20,7 @@ interface LoanCalculatorProps {
 
 const LoanCalculator = (data : LoanCalculatorProps) => {
   return (
-    <div className="flex w-[360px] flex-col gap-5">
+    <div className="flex w-[360px] flex-col gap-5 lg:w-[521px]">
       <div className="rounded-32 bg-white border-basic p-8 text-4xl backdrop-blur-md shadow-[0_4px_4px_rgba(0,0,0,0.25)] flex flex-col gap-5 w-full">
         <div className="text-light-gray font-semibold text-[18px] leading-[21.78px]">
             Home Loan Balancer Tranfer
@@ -29,7 +29,7 @@ const LoanCalculator = (data : LoanCalculatorProps) => {
           return <InputRange key={index} SingleInputData={item} formik={data?.formik}/>
         })}
       </div>
-      <button className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange lg:w-[238px]" onClick={() => data?.formik?.handleSubmit()}>
+      <button className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange" onClick={() => data?.formik?.handleSubmit()}>
         Start Saving
       </button>
     </div>
