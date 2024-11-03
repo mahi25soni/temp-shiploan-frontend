@@ -5,6 +5,7 @@ import SuggestedLoan from '@/components/SuggestedLoan/SuggestedLoan';
 import SuggestedLenders from '@/components/SuggestesLenders/SuggestedLenders';
 import PageWrapper from '@/components/wrappers/PageWrapper'
 import SuggestedLoanWrapper from '@/components/wrappers/SuggestedLoanWrapper';
+import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 
@@ -51,6 +52,15 @@ const InputRangeData = [
   }
 ]
 
+interface LenderInfo {
+  id : string,
+  name: string,
+  roi: string,
+  amount: string,
+  eligibility: string,
+  disbursement: string
+}
+
 const HomeLoan = () => {
   const [suggestLoan, setSuggestLoan] = useState(false)
   const [suggestedLoanData, setSuggestedLoanData] = useState({
@@ -74,7 +84,11 @@ const HomeLoan = () => {
       })
       setSuggestLoan(true)
     },
+
   })
+
+  const [lenderComparisonArray, setLenderComparisonArray] = useState([])
+  const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
   return (
     <div className='min-h-screen w-full bg-light-green'>
       (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
@@ -83,7 +97,7 @@ const HomeLoan = () => {
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} />}
 
       </PageWrapper>)
-      <SuggestedLenders ></SuggestedLenders>
+      <SuggestedLenders lenderArray = {lenderArray}  ></SuggestedLenders>
       <LenderComparison ></LenderComparison>
     </div>
 
