@@ -1,6 +1,7 @@
 "use client";
 import LoanCalculator from '@/components/CalculaterComponent/LoanCalculator'
 import SuggestedLoan from '@/components/SuggestedLoan/SuggestedLoan';
+import SuggestedLenders from '@/components/SuggestesLenders/SuggestedLenders';
 import PageWrapper from '@/components/wrappers/PageWrapper'
 import SuggestedLoanWrapper from '@/components/wrappers/SuggestedLoanWrapper';
 import { useFormik } from 'formik'
@@ -81,6 +82,7 @@ const HomeLoan = () => {
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} />}
 
       </PageWrapper>)
+      <SuggestedLenders ></SuggestedLenders>
     </div>
 
   );

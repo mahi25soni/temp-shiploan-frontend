@@ -32,6 +32,7 @@ const config: Config = {
         "light-purple": "var(--bg-light-purple)",
         "light-green": "var(--bg-light-green)",
         "light-blue": "var(--bg-light-blue)",
+        'transparent-gray': 'rgba(72, 69, 76, 0.05)'
       },
     },
   },
