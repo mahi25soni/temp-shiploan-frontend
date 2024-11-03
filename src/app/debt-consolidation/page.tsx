@@ -50,6 +50,7 @@ const DebtConsolidation = () => {
 
   const [suggestLoan, setSuggestLoan] = useState(false)
   const [suggestLenders, setSuggestLenders] = useState(false)
+  const [lenderComparison, setLenderComparison] = useState(false)
 
   const [suggestedLoanData, setSuggestedLoanData] = useState({
     amount: 0,
@@ -71,7 +72,7 @@ const DebtConsolidation = () => {
       setSuggestLoan(true)
     },
   })
-  const [lenderComparisonArray, setLenderComparisonArray] = useState([])
+  const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>([])
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
   return (
 
@@ -83,8 +84,8 @@ const DebtConsolidation = () => {
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
       </PageWrapper>)
-      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} />}
-      <LenderComparison ></LenderComparison>
+      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} />}
+      {lenderComparison && lenderComparisonArray?.length > 1 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
     </div>
 
   )

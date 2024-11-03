@@ -92,7 +92,7 @@ const HomeLoan = () => {
   const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>([])
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
   return (
-    <div className='min-h-screen w-full bg-light-green'>
+    <div className='min-h-full w-full bg-light-green pb-5'>
       (<PageWrapper heading='Balance Transfer on a Home Loan' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
         <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
