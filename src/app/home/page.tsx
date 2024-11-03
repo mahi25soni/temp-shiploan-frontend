@@ -1,12 +1,14 @@
 "use client"
-import BlogListing from "@/components/BlogListing/BlogListing";
-import CarouselWrapper from "@/components/CarouselWrapper/CarouselWrapper";
-import HomePageComponentWrapper from "@/components/wrappers/HomePageComponentWrapper";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 type Props = {};
+
+const CarouselWrapper = dynamic(() => import("@/components/CarouselWrapper/CarouselWrapper"));
+const BlogListing = dynamic(() => import("@/components/BlogListing/BlogListing"));
+const HomePageComponentWrapper = dynamic(() => import("@/components/wrappers/HomePageComponentWrapper"));
 
 
 const LoanOptions: { [key: string]: string }[] = [

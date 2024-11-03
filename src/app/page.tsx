@@ -1,7 +1,6 @@
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
-const HomePage = dynamic(() => import("./(home)/page"));
+const HomePage = dynamic(() => import("./home/page"));
 
 export default function Home() {
   return <HomePage />;

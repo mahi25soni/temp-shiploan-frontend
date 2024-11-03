@@ -6,19 +6,20 @@
     "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-frontend" : "next build && next export"
   },
   "dependencies": {
     "flowbite": "^2.5.2",
     "formik": "^2.4.6",
-    "next": "15.0.1",
+    "next": "^15.0.2",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-swipeable": "^7.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^22.8.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
