@@ -42,7 +42,7 @@ const CarouselWrapper = () => {
           <div
             key={index}
             className={`absolute inset-0 top-40 flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeSlide === index ? "opacity-100" : "opacity-0"
-              } lg:mx-20 lg:top-0 lg:grid lg:grid-cols-12 lg:pl-[100px] lg:pr-[20px]`}
+              } lg:top-0 lg:grid lg:grid-cols-12 lg:pl-[150px] lg:pr-[50px]`}
           >
             <div className="flex h-[300px] w-[334px] flex-col items-start justify-start gap-6 rounded-32 border border-basic bg-white p-5 text-center lg:col-span-6 lg:h-max lg:w-[494px] lg:text-left xl:col-span-5">
               <div className="line-clamp-2 text-[32px] font-bold leading-[48px] lg:text-[48px] lg:leading-[72px]">

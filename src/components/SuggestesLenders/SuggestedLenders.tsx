@@ -35,7 +35,7 @@ const SuggestedLenders = (data: props) => {
     }
     return (
         <div
-            className="m-auto flex h-full w-full flex-col  items-center justify-start gap-6 lg:px-[200px]"
+            className="m-auto flex h-full w-full flex-col  items-center justify-start gap-6 lg:px-[134px]"
         >
 
             {
