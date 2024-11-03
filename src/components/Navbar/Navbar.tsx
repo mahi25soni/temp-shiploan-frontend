@@ -29,7 +29,7 @@ const Navbar = () => {
     <div
       className={`fixed left-0 top-0 z-50 flex w-full items-center justify-between ${
         isMobileMenuOpen ? "h-screen" : "h-[125px]"
-      } bg-white/25 p-8 text-black backdrop-blur-lg transition-all duration-300`}
+      } bg-white/75 p-8 text-black backdrop-blur-lg transition-all duration-300`}
     >
       {/* Logo and List Icon (hidden when menu is open) */}
       {!isMobileMenuOpen && (
