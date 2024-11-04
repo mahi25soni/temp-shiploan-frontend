@@ -37,7 +37,7 @@ const Navbar = () => {
         <div className="flex items-center gap-[30px] lg:gap-[58px]">
           <div className="relative">
             <Image
-              src="/theLogo.png"
+              src="/theLogo.svg"
               height={22.76}
               width={150}
               objectFit="contain"

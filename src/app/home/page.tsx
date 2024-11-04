@@ -30,7 +30,7 @@ const HomePage = (props: Props) => {
       <CarouselWrapper />
       <HomePageComponentWrapper
         bgColor={"#FFFFFF"}
-        mainImage="/looking through resumes.png"
+        mainImage="/looking through resumes.svg"
         heading="Compare lenders to find the right one"
         description="Lorem ipsum dolor sit amet consectetur. Diam sed mattis facilisis eget tellus dui augue sagittis ultricies. Scelerisque elit duis in tortor. Volutpat elit neque in sem nulla quam imperdiet. Mi nisl sem amet odio."
         altText="kuchh bhi rakhlo"
@@ -58,7 +58,7 @@ const HomePage = (props: Props) => {
       <BlogListing />
       <HomePageComponentWrapper
         bgColor={"#D1E6DF"}
-        mainImage="/convert megaphone.png"
+        mainImage="/convert megaphone.svg"
         heading="Get updates in your inbox"
         description="Lorem ipsum dolor sit amet consectetur. Diam sed mattis facilisis eget tellus dui augue sagittis ultricies. Scelerisque elit duis in tortor. Volutpat elit neque in sem nulla quam imperdiet. Mi nisl sem amet odio."
         altText="kuchh bhi rakhlo"

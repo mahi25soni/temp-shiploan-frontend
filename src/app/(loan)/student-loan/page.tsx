@@ -93,7 +93,7 @@ const StudentLoan = () => {
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
   return (
     <div className='min-h-screen w-full bg-light-skin pb-5'>
-      (<PageWrapper heading='How to refinance a Student Loan' altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+      (<PageWrapper heading='How to refinance a Student Loan' altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.svg' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
         <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}

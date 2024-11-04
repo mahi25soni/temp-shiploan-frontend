@@ -78,7 +78,7 @@ const DebtConsolidation = () => {
 
 
     <div className='min-h-screen w-full bg-light-purple pb-5'>
-      (<PageWrapper heading='How Debt Consolidation works' altText='Background Image' bgColor='#FBEED9' mainImage='/money and pie chart.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+      (<PageWrapper heading='How Debt Consolidation works' altText='Background Image' bgColor='#FBEED9' mainImage='/money and pie chart.svg' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
         <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}

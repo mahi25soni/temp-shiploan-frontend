@@ -18,7 +18,7 @@ const BlogItem = (props: BlogItemInterface) => {
     <div className="flex h-[423px] min-w-[317px] flex-col gap-[25px]">
       <div className="relative h-[314px] w-full rounded-32 border-basic">
         <Image
-          src="/blogbg1.png"
+          src="/blogbg1.svg"
           alt="Blog Item Background"
           fill
           className="object-fill"
