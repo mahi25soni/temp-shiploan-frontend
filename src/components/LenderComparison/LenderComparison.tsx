@@ -24,7 +24,7 @@ const LenderComparison = ({data} : props) => {
       </div>
                </div>
       <div className='p-6  w-[353px]  lg:w-full  rounded-[32px] bg-white border border-gray-300 shadow-[0_2px_8px_rgba(0,0,0,0.25)]  '>
-      <table className=" w-full  bg-white border border-gray-300 text-center">
+      <table className=" w-full  bg-white border border-gray-300 text-center table-fixed">
         <thead>
           <tr className="">
             <th className="py-4 px-6 font-bold text-[24px] lg:text-[64px] border-b border-gray-300">{data?.[0]?.name}</th>
@@ -44,21 +44,21 @@ const LenderComparison = ({data} : props) => {
           </tr>
           <tr>
             <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.amount}</td>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.amount}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.amount}</td>
           </tr>
           <tr>
             <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[32px] lg:leading-[38.73px]  border-t border-gray-300">Eligibility</td>
           </tr>
           <tr>
             <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.eligibility}</td>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.eligibility}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.eligibility}</td>
           </tr>
           <tr>
             <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">Disbursement Period</td>
           </tr>
           <tr>
             <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.disbursement}</td>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.disbursement}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.disbursement}</td>
           </tr>
         </tbody>
       </table>
