@@ -28,7 +28,6 @@ const HomePage = (props: Props) => {
   return (
     <div>
       <CarouselWrapper />
-      <BlogListing />
       <HomePageComponentWrapper
         bgColor={"#FFFFFF"}
         mainImage="/looking through resumes.png"
@@ -56,6 +55,7 @@ const HomePage = (props: Props) => {
           </button>
         </Link>
       </HomePageComponentWrapper>
+      <BlogListing />
       <HomePageComponentWrapper
         bgColor={"#D1E6DF"}
         mainImage="/convert megaphone.png"

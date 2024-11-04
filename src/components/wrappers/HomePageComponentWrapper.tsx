@@ -14,10 +14,10 @@ interface HomePageComponentWrapperProps {
 const HomePageComponentWrapper = (data: HomePageComponentWrapperProps) => {
   return (
     <div
-      className="flex w-full flex-row items-center justify-center m-auto  h-[1192px]"
-      style={{
-        background: `linear-gradient(to bottom, white 10%, ${data?.bgColor} 10%, ${data?.bgColor} 90%, white 90%)`,
-      }}
+    className="flex w-full flex-row items-center justify-center m-auto h-[1192px]"
+    style={{
+      background: `linear-gradient(to bottom, white 10%, ${data?.bgColor} 10%, ${data?.bgColor} 100%)`
+    }}
     >
       <div className="flex w-full flex-col  items-center gap-10 lg:flex-row lg:justify-center lg:gap-20">
         <div className="relative h-[292px] w-[282px] lg:h-[544px] lg:w-[526px]">
