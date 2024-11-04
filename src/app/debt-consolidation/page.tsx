@@ -77,8 +77,8 @@ const DebtConsolidation = () => {
   return (
 
 
-    <div className='min-h-screen w-full bg-light-skin pb-5'>
-      (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#FBEED9' mainImage='/money and pie chart.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+    <div className='min-h-screen w-full bg-light-purple pb-5'>
+      (<PageWrapper heading='How Debt Consolidation works' altText='Background Image' bgColor='#FBEED9' mainImage='/money and pie chart.png' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
         <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}

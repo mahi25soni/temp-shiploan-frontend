@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { RxCross2 } from "react-icons/rx";
 
 const NavbarItems: { [key: string]: string }[] = [
   { tab: "Home", link: "/" },
@@ -71,9 +72,7 @@ const Navbar = () => {
         <div className="fixed inset-0 z-40 bg-white/25  p-8 text-black flex flex-col">
           {/* Close Button */}
           <div className="flex justify-end">
-            <div className="relative h-6 w-6 cursor-pointer" onClick={toggleMobileMenu}>
-              <Image src="/List.svg" fill alt="close menu" className="object-fill" />
-            </div>
+              <RxCross2 className="w-7 h-7 cursor-pointer" onClick={toggleMobileMenu}/>
           </div>
           
           {/* Mobile Navigation Links */}
