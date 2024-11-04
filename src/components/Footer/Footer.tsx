@@ -24,7 +24,7 @@ const Footer = () => {
 
 
                     <div className="absolute left-[92px] -top-8 ">
-                        <Image src="/footer.svg" alt="Footer Mobile View" width={512} height={317} className="sm:hidden " />
+                        {/* <Image src="/footer.svg" alt="Footer Mobile View" width={512} height={317} className="sm:hidden " /> */}
                     </div>
                 </div>
 

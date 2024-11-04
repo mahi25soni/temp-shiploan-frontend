@@ -49,6 +49,12 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
                 onBlur={handleBlur}
+                className="outline-none focus:ring-0" // Add these classes
+                style={{
+                  border: 'none',
+                  boxShadow: 'none',
+                  backgroundColor: 'transparent',
+                }}
               >
                 {data.formik.values[data.SingleInputData.name]}
               </span>
@@ -59,6 +65,12 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
                 onBlur={handleBlur}
+                className="outline-none focus:ring-0" // Add these classes
+                style={{
+                  border: 'none',
+                  boxShadow: 'none',
+                  backgroundColor: 'transparent',
+                }}
               >
                 {data.formik.values[data.SingleInputData.name]}
               </span>{' '}
@@ -70,6 +82,12 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
                 onBlur={handleBlur}
+                className="outline-none focus:ring-0" // Add these classes
+                style={{
+                  border: 'none',
+                  boxShadow: 'none',
+                  backgroundColor: 'transparent',
+                }}
               >
                 {data.formik.values[data.SingleInputData.name]}
               </span>{' '}
