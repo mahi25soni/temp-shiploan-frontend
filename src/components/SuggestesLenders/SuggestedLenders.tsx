@@ -65,18 +65,18 @@ const SuggestedLenders = (data: props) => {
     }
     return (
         <div
-            className="m-auto flex h-full w-full flex-col  items-center justify-start gap-6 lg:px-[134px]"
+            className="relative m-auto flex h-full w-full flex-col  items-center justify-start gap-6 lg:px-[134px]"
         >
 
             {
-                firstLenderCandidate && <div className='shadow-[0_2px_8px_rgba(0,0,0,0.25)] p-6 flex flex-col lg:hidden rounded-2xl w-[353px] bg-white gap-4'>
+                firstLenderCandidate && <div className='shadow-[0_2px_8px_rgba(0,0,0,0.25)] p-6 flex flex-col lg:hidden rounded-2xl w-[353px] bg-white gap-4 sticky top-[130px] left-0 z-10'>
                     <div className='flex items-center justify-around h-[29px]'>
-                        <div className='description-text-24 font-bold'>
+                        <div className='description-text-24 font-bold text-center   '>
                             {firstLenderCandidate?.["name"]}
 
                         </div>
                         <BrownLine height={true} />
-                        <div className='description-text-24 font-bold'>
+                        <div className='description-text-24 font-bold text-center'>
                             {secondLenderCandidate ? secondLenderCandidate["name"] : <Image src='/PlusCircle.svg' width={18} height={18} alt="Add Button" className='rounded-full' />}
                         </div>
                     </div>
