@@ -2,6 +2,7 @@
 import { CarouselSampleData } from "@/testdata/carousel-data";
 import Image from "next/image";
 import React, { useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface SlideDataInterface {
   title: string;
@@ -74,9 +75,11 @@ const CarouselWrapper = () => {
         className="group absolute start-0 top-24 z-30 flex h-full cursor-pointer items-center justify-center px-4 lg:top-0"
         onClick={handlePrev}
       >
-        <div className="relative w-[42px] h-[52px] lg:w-[101.65px] lg:h-[125.85px]">
-          <Image src="/LeftSignDesktop.svg" fill alt="Left Sign "/>
+        <div className="w-[42px] h-[52px] lg:w-[101.65px] lg:h-[125.85px] border-2 lg:border-[4.84px] rounded-32 lg:rounded-[77.45px] flex justify-center items-center border-light-range bg-white">
+          <FaChevronLeft className="text-range-line text-[20px] lg:text-[48.41px]" />
         </div>
+
+
       </button>
 
       <button
@@ -85,8 +88,8 @@ const CarouselWrapper = () => {
         onClick={handleNext}
       >
 
-                <div className="relative w-[42px] h-[52px] lg:w-[101.65px] lg:h-[125.85px]">
-          <Image src="/RightSignDesktop.svg" fill alt="Right Sign "/>
+        <div className="w-[42px] h-[52px] lg:w-[101.65px] lg:h-[125.85px] border-2 lg:border-[4.84px] rounded-32 lg:rounded-[77.45px] flex justify-center items-center border-light-range bg-white">
+          <FaChevronRight className="text-range-line text-[20px] lg:text-[48.41px]" />
         </div>
       </button>
     </div>
