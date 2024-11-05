@@ -2,14 +2,19 @@ import MainHeading from '@/components/atoms/MainHeading'
 import { BlogSlugSampleData } from '@/testdata/blog-slug-data'
 import Image from 'next/image'
 import React from 'react'
-
-interface Props {
-    params: { slug: string }
+interface BlogPost {
+    image: string;
+    blog_title: string;
+    blog_content: string;
+    author: string;
+    date: string;
 }
-const Blog = ({ params }: Props) => {
-    const { slug } = params
+type Params = Promise<{ slug: string }>;
 
-    const postData = BlogSlugSampleData[slug]
+const Blog = async ({ params }: { params: Params }) => {
+    const { slug } = await params;
+
+    const postData: BlogPost = BlogSlugSampleData[slug]
 
     if (!postData) {
         return <div>Post not found</div>
