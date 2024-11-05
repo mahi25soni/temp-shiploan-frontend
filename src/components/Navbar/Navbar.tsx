@@ -10,6 +10,8 @@ const NavbarItems: { [key: string]: string }[] = [
   { tab: "Home Loan", link: "/home-loan" },
   { tab: "Credit Card Debt", link: "/creditcard-loan" },
   { tab: "Student Loan", link: "/student-loan" },
+  {tab : "Contact Us", link: "/contact"},
+  {tab : "About Us", link: "/about"},
   // { tab: "Blogs", link: "/blogs" }
 ];
 
@@ -34,7 +36,7 @@ const Navbar = () => {
     >
       {/* Logo and List Icon (hidden when menu is open) */}
       {!isMobileMenuOpen && (
-        <div className="flex items-center gap-[30px] lg:gap-[58px]">
+        <div className="flex items-center gap-[20px] lg:gap-[58px]">
           <div className="relative">
             <Image
               src="/theLogo.svg"
@@ -50,7 +52,7 @@ const Navbar = () => {
               <div
                 onClick={() => handleSelectTab(item.tab)}
                 className={`hidden cursor-pointer text-base lg:block ${
-                  selectedTab === item.tab ? "font-bold" : "font-normal"
+                  selectedTab === item.tab ? "font-bold" : "font-normal opacity-50"
                 }`}
               >
                 {item.tab}
