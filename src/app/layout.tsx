@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import { NavbarProvider } from "@/context/contextApi";
 
 
 export const metadata: Metadata = {
@@ -19,9 +20,12 @@ export default function RootLayout({
       <body
         className="relative h-full min-h-screen"
       >
-        <Navbar />
-        {children}
-        <Footer></Footer>
+        <NavbarProvider >
+
+          <Navbar />
+          {children}
+          <Footer></Footer>
+        </NavbarProvider>
       </body>
     </html>
   );

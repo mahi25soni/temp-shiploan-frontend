@@ -4,6 +4,7 @@ import MainHeading from "../atoms/MainHeading";
 import { BlogSampleData } from "@/testdata/blog-data";
 import Image from "next/image";
 import Link from 'next/link';
+import { useNavbar } from "@/context/contextApi";
 
 interface BlogItemInterface {
   blog_title: string;
@@ -39,6 +40,7 @@ const BlogItem = (props: BlogItemInterface) => {
 };
 
 const BlogListing = () => {
+  const {setSelectedTab} = useNavbar()
   const [blogDataArray, setBlogDataArray] = useState<BlogItemInterface[]>(data);
 
   useEffect(() => {
@@ -53,7 +55,7 @@ const BlogListing = () => {
           const slug = blog.blog_title.toLowerCase().replace(/ /g, '-');
 
           return (
-            <Link href={`/blog/${slug}`} key={index}>
+            <Link href={`/blog/${slug}`} key={index} onClick={() => setSelectedTab("Blog")}>
               <BlogItem
                 blog_title={blog.blog_title}
                 blog_content={blog.blog_content}

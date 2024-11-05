@@ -1,4 +1,5 @@
 "use client"
+import { useNavbar } from "@/context/contextApi";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,13 +18,16 @@ const LoanOptions: { [key: string]: string }[] = [
   { tab: "Student Loan", link: "/student-loan" },
 ];
 const HomePage = (props: Props) => {
-  const [selectedTab, setSelectedTab] = useState<string>("Home Loan");
+  const { setSelectedTab } = useNavbar();
+
+  const [tempSelectedTab, setTempSelectedTab] = useState<string>("Home Loan");
   const [selectedTabLink, setSelectedTabLink] = useState<string>("/home-loan");
 
   useEffect(() => {
-    const theLink = LoanOptions.find((item) => item.tab === selectedTab)?.link || "/home-loan";
+    const theLink = LoanOptions.find((item) => item.tab === tempSelectedTab)?.link || "/home-loan";
     setSelectedTabLink(theLink);
-  }, [selectedTab]);
+
+  }, [tempSelectedTab]);
 
   return (
     <div>
@@ -39,8 +43,8 @@ const HomePage = (props: Props) => {
           {LoanOptions.map((item, index) => (
             <div
               key={index}
-              onClick={() => setSelectedTab(item?.tab)}
-              className={`text-2xl leading-9 whitespace-nowrap cursor-pointer ${selectedTab !== item.tab ? "opacity-20" : ""
+              onClick={() => setTempSelectedTab(item?.tab)}
+              className={`text-2xl leading-9 whitespace-nowrap cursor-pointer ${tempSelectedTab !== item.tab ? "opacity-20" : ""
                 }`}
             >
               {item.tab}
@@ -49,7 +53,7 @@ const HomePage = (props: Props) => {
         </div>
 
 
-        <Link href={selectedTabLink} passHref>
+        <Link href={selectedTabLink} passHref onClick={() => setSelectedTab(tempSelectedTab)}>
           <button className="w-[270px] rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange">
             Start Saving
           </button>

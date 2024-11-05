@@ -1,4 +1,5 @@
 "use client";
+import { useNavbar } from "@/context/contextApi";
 import { CarouselSampleData } from "@/testdata/carousel-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,13 +11,15 @@ interface SlideDataInterface {
   desc: string;
   bgImage: string;
   bgColor: string;
-  redirectUrl: string
+  redirectUrl: string,
+  tab: string
 }
 
 const slides: SlideDataInterface[] = CarouselSampleData
 
 const CarouselWrapper = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const { setSelectedTab } = useNavbar()
 
   const handlePrev = () => {
     setActiveSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -55,7 +58,7 @@ const CarouselWrapper = () => {
               <div className="line-clamp-3 text-[18px] leading-5 lg:line-clamp-none">
                 {slide?.desc}
               </div>
-              <Link href={slides[activeSlide]?.redirectUrl} key={index} className="w-full">
+              <Link href={slides[activeSlide]?.redirectUrl} key={index} className="w-full" onClick={() => setSelectedTab(slides[activeSlide]?.tab)}>
                 <button className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange lg:w-[238px]">
                   Start Saving
                 </button>
