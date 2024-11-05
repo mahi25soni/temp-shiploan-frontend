@@ -137,7 +137,7 @@ const SingleLenderInfo = ({
     const isSelected = selectedLenderIds.some(selectedId => selectedId === lender.id);
 
     return (
-        <div className='p-6 bg-white rounded-32 flex justify-between items-center gap-4 w-[353px] shadow-[0_2px_8px_rgba(0,0,0,0.25)] lg:w-full lg:rounded-2xl lg:p-8 
+        <div className='p-6 bg-white  flex justify-between items-center gap-4 w-[353px] shadow-[0_2px_8px_rgba(0,0,0,0.25)] lg:w-full rounded-2xl lg:p-8 h-[152px]
     '>
             <div className='flex flex-col gap-4 lg:w-full'>
                 <div className='flex items-center  gap-1 lg:h-[58px] lg:justify-between lg:w-full'>
@@ -208,8 +208,10 @@ const SingleLenderInfo = ({
                 </div>
             </div>
 
-            <BrownLine height={true} />
-            <div className='flex flex-col gap-4 lg:hidden'>
+
+           <BrownLine height={true} />
+
+            <div className='flex flex-col gap-7 lg:hidden'>
                 <div className='flex flex-col gap-1 '>
                     <div className='text-xs leading-[14.52px] text-[#000000]'>
                         Eligiblity
@@ -218,7 +220,7 @@ const SingleLenderInfo = ({
                         {lender?.eligibility}
                     </div>
                 </div>
-                <div className='h-[1px]'></div>
+                {/* <div ></div> */}
                 <div className='flex flex-col gap-1 '>
                     <div className='text-xs leading-[14.52px] text-[#000000]'>
                         Disbursement
