@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import MainHeading from "../atoms/MainHeading";
 import { BlogSampleData } from "@/testdata/blog-data";
 import Image from "next/image";
+import Link from 'next/link';
 
 interface BlogItemInterface {
   blog_title: string;
@@ -44,22 +45,27 @@ const BlogListing = () => {
     setBlogDataArray(data);
   }, []);
   return (
+
     <div className="lg:pl-[152px]">
       <MainHeading heading="Learn more ways to save" />
-      <div className="mt-10 pl-8 scrollbar-hidden flex flex-row w-full items-center justify-start gap-8 lg:gap-[90px] overflow-auto lg:pl-0">
+      <div className="mt-10 pl-8 scrollbar-hidden flex flex-row w-full items-center justify-start gap-8 lg:gap-[90px] overflow-auto lg:pl-0 cursor-pointer">
         {blogDataArray?.map((blog, index) => {
+          const slug = blog.blog_title.toLowerCase().replace(/ /g, '-');
+
           return (
-            <BlogItem
-              key={index}
-              blog_title={blog.blog_title}
-              blog_content={blog.blog_content}
-              author={blog.author}
-              date={blog.date}
-            />
+            <Link href={`/blog/${slug}`} key={index}>
+              <BlogItem
+                blog_title={blog.blog_title}
+                blog_content={blog.blog_content}
+                author={blog.author}
+                date={blog.date}
+              />
+            </Link>
           );
         })}
       </div>
     </div>
+
   );
 };
 
