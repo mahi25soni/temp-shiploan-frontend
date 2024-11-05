@@ -23,7 +23,7 @@ const PageWrapper = (data: PageWrapperProps) => {
             alt="hero-image"
           />
         </div>
-        <div className="justify-start flex h-full flex-col items-center px-10 gap-5 lg:w-[561px] lg:items-start">
+        <div className="justify-start flex h-full flex-col items-center px-5 lg:px-10 gap-5 lg:w-[561px] lg:items-start">
           <MainHeading heading={data?.heading} align="left" />
           <div className="description-text-18 lg:description-text-24">
             {data?.description}
