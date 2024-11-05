@@ -32,6 +32,7 @@ const CarouselWrapper = () => {
       style={{
         background: `linear-gradient(to bottom, ${slides[activeSlide]?.bgColor}, rgba(255, 255, 255, 0.7))`
       }}>
+
       <div className="absolute left-1/2 top-20 m-auto h-[400px] w-[350px] -translate-x-1/2 transform lg:hidden">
         <Image
           src={slides[activeSlide]?.bgImage}
@@ -45,16 +46,16 @@ const CarouselWrapper = () => {
           <div
             key={index}
             className={`absolute inset-0 top-40 flex items-center justify-center transition-opacity duration-700 ease-in-out ${activeSlide === index ? "opacity-100" : "opacity-0"
-              } lg:top-0 lg:grid lg:grid-cols-12 lg:pl-[150px] lg:pr-[50px]`}
+              } lg:top-0 lg:grid lg:grid-cols-12 lg:pl-[222px] lg:pr-[50px]`}
           >
-            <div className="flex h-[300px] w-[334px] flex-col items-start justify-start gap-6 rounded-32 border border-basic bg-white p-5 text-center lg:col-span-6 lg:h-max lg:w-[494px] lg:text-left xl:col-span-5">
+            <div className="flex h-[300px] w-[334px] flex-col items-start justify-start gap-6 rounded-32 border border-basic bg-white p-5 text-center lg:col-span-6 lg:h-max lg:w-[456px] lg:text-left xl:col-span-5">
               <div className="line-clamp-2 text-[32px] font-bold leading-[48px] lg:text-[48px] lg:leading-[72px]">
                 {slide?.title}
               </div>
               <div className="line-clamp-3 text-[18px] leading-5 lg:line-clamp-none">
                 {slide?.desc}
               </div>
-              <Link href={slides[activeSlide]?.redirectUrl} key={index} >
+              <Link href={slides[activeSlide]?.redirectUrl} key={index} className="w-full">
                 <button className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange lg:w-[238px]">
                   Start Saving
                 </button>
@@ -76,7 +77,7 @@ const CarouselWrapper = () => {
       {/* Previous Button */}
       <button
         type="button"
-        className="group absolute start-0 top-24 z-30 flex h-full cursor-pointer items-center justify-center px-4 lg:top-0"
+        className="group absolute start-0 top-24 z-30 flex h-full cursor-pointer items-center justify-center  pl-4 lg:pl-8 lg:top-0"
         onClick={handlePrev}
       >
         <div className="w-[42px] h-[52px] lg:w-[101.65px] lg:h-[125.85px] border-2 lg:border-[4.84px] rounded-32 lg:rounded-[77.45px] flex justify-center items-center border-light-range bg-white">
@@ -88,7 +89,7 @@ const CarouselWrapper = () => {
 
       <button
         type="button"
-        className="group absolute end-0 top-24 z-30 flex h-full cursor-pointer items-center justify-center px-4 lg:top-0"
+        className="group absolute end-0 top-24 z-30 flex h-full cursor-pointer items-center justify-center pr-4 lg:pr-8 lg:top-0"
         onClick={handleNext}
       >
 
