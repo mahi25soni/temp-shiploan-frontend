@@ -27,38 +27,38 @@ const LenderComparison = ({data} : props) => {
       <table className=" w-full  bg-white border border-gray-300 text-center table-fixed">
         <thead>
           <tr className="">
-            <th className="py-4 px-6 font-bold text-[24px] lg:text-[64px] border-b border-gray-300">{data?.[0]?.name}</th>
-            <th className="py-4 px-6 font-bold text-[24px] lg:text-[64px] border-b border-gray-300">{data?.[1]?.name}</th>
+            <th className="py-4 px-6 font-bold text-[24px] lg:text-[40px] border-b border-gray-300">{data?.[0]?.name}</th>
+            <th className="py-4 px-6 font-bold text-[24px] lg:text-[40px] border-b border-gray-300">{data?.[1]?.name}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[32px] lg:leading-[38.73px]  border-t border-gray-300">ROI</td>
+            <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px]  border-t border-gray-300">ROI</td>
           </tr>
           <tr>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.roi}</td>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.roi}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.roi}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.roi}</td>
           </tr>
           <tr>
-            <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">Amount</td>
+            <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">Amount</td>
           </tr>
           <tr>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.amount}</td>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.amount}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.amount}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.amount}</td>
           </tr>
           <tr>
-            <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[32px] lg:leading-[38.73px]  border-t border-gray-300">Eligibility</td>
+            <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px]  border-t border-gray-300">Eligibility</td>
           </tr>
           <tr>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.eligibility}</td>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.eligibility}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.eligibility}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.eligibility}</td>
           </tr>
           <tr>
-            <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">Disbursement Period</td>
+            <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">Disbursement Period</td>
           </tr>
           <tr>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.disbursement}</td>
-            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[32px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.disbursement}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.disbursement}</td>
+            <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.disbursement}</td>
           </tr>
         </tbody>
       </table>

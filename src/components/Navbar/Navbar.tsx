@@ -34,13 +34,15 @@ const Navbar = () => {
       {!isMobileMenuOpen && (
         <div className="flex items-center gap-[20px] lg:gap-[58px]">
           <div className="relative">
-            <Image
-              src="/theLogo.svg"
-              height={22.76}
-              width={150}
-              objectFit="contain"
-              alt="logo"
-            />
+            <Link href={"/"} passHref onClick={() => setSelectedTab("Home")}>
+              <Image
+                src="/theLogo.svg"
+                height={22.76}
+                width={150}
+                objectFit="contain"
+                alt="logo"
+              /></Link>
+
           </div>
           {/* Desktop Navigation Links */}
           {NavbarItems.map((item, index) => (
