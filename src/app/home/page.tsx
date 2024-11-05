@@ -39,7 +39,7 @@ const HomePage = (props: Props) => {
         description="Lorem ipsum dolor sit amet consectetur. Diam sed mattis facilisis eget tellus dui augue sagittis ultricies. Scelerisque elit duis in tortor. Volutpat elit neque in sem nulla quam imperdiet. Mi nisl sem amet odio."
         altText="kuchh bhi rakhlo"
       >
-        <div className="flex flex-row scrollbar-hidden max-w-[423px] py-2 border-y border-light-gray gap-[30px] overflow-auto lg:max-w-full items-center justify-start">
+        <div className="flex flex-row scrollbar-hidden max-w-[423px] p-2 border-y border-light-gray gap-[30px] overflow-auto lg:max-w-full items-center justify-start">
           {LoanOptions.map((item, index) => (
             <div
               key={index}
