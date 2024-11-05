@@ -1,6 +1,7 @@
 "use client";
 import { CarouselSampleData } from "@/testdata/carousel-data";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
@@ -9,6 +10,7 @@ interface SlideDataInterface {
   desc: string;
   bgImage: string;
   bgColor: string;
+  redirectUrl: string
 }
 
 const slides: SlideDataInterface[] = CarouselSampleData
@@ -52,9 +54,11 @@ const CarouselWrapper = () => {
               <div className="line-clamp-3 text-[18px] leading-5 lg:line-clamp-none">
                 {slide?.desc}
               </div>
-              <button className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange lg:w-[238px]">
-                Start Saving
-              </button>
+              <Link href={slides[activeSlide]?.redirectUrl} key={index} >
+                <button className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange lg:w-[238px]">
+                  Start Saving
+                </button>
+              </Link>
             </div>
             <div className="relative hidden h-full w-full lg:col-span-6 lg:block lg:h-3/4 xl:col-span-7 xl:h-full">
               <Image
