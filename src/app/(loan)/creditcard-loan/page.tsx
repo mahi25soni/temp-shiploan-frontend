@@ -15,7 +15,7 @@ const InputRangeData = [
     label: 'Outstanding Amount',
     minValue: 0,
     maxValue: 100000, // In Rupees
-    step: 1000,
+    step: 1,
     type: "currency"
   },
   {
@@ -39,7 +39,7 @@ const InputRangeData = [
     label: 'EMI',
     minValue: 0,
     maxValue: 100000, // In Rupees
-    step: 1000,
+    step: 1,
     type: "currency"
   },
   {
@@ -95,7 +95,7 @@ const CreditCardLoan = () => {
     < div className='min-h-screen w-full bg-light-blue pb-5' >
       (<PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#D5E8ED' mainImage='/credit cards.svg' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
-        <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
+        <LoanCalculator InputDataList={InputRangeData} formik={formik} heading='Credit Card Balance Transfer'></LoanCalculator>
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
       </PageWrapper>)

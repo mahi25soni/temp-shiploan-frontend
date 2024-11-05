@@ -15,7 +15,7 @@ const InputRangeData = [
     label: 'Outstanding Amount',
     minValue: 0,
     maxValue: 100000, // In Rupees
-    step: 1000,
+    step: 1,
     type: "currency"
   },
   {
@@ -39,7 +39,7 @@ const InputRangeData = [
     label: 'EMI',
     minValue: 0,
     maxValue: 100000, // In Rupees
-    step: 1000,
+    step: 1,
     type: "currency"
   },
   {
@@ -95,7 +95,7 @@ const HomeLoan = () => {
     <div className='min-h-full w-full bg-light-green pb-5'>
       (<PageWrapper heading='Balance Transfer on a Home Loan' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.svg' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
-        <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
+        <LoanCalculator InputDataList={InputRangeData} formik={formik} heading='Home Loan Balance Transfer'></LoanCalculator>
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
       </PageWrapper>)

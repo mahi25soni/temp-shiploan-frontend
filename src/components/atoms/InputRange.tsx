@@ -49,7 +49,7 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
                 onBlur={handleBlur}
-                className="outline-none focus:ring-0" // Add these classes
+                className="outline-none focus:ring-0 cursor-auto" // Add these classes
                 style={{
                   border: 'none',
                   boxShadow: 'none',
@@ -64,8 +64,8 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
               <span
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
-                onBlur={handleBlur}
-                className="outline-none focus:ring-0" // Add these classes
+               onBlur={handleBlur}
+                className="outline-none focus:ring-0 cursor-auto" // Add these classes
                 style={{
                   border: 'none',
                   boxShadow: 'none',
@@ -82,7 +82,7 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
                 onBlur={handleBlur}
-                className="outline-none focus:ring-0" // Add these classes
+                className="outline-none focus:ring-0 cursor-auto" // Add these classes
                 style={{
                   border: 'none',
                   boxShadow: 'none',

@@ -15,7 +15,7 @@ const InputRangeData = [
     label: 'Outstanding Amount',
     minValue: 0,
     maxValue: 100000, // In Rupees
-    step: 1000,
+    step: 1,
     type: "currency"
   },
   {
@@ -39,7 +39,7 @@ const InputRangeData = [
     label: 'EMI',
     minValue: 0,
     maxValue: 100000, // In Rupees
-    step: 1000,
+    step: 1,
     type: "currency"
   },
   {
@@ -95,7 +95,7 @@ const StudentLoan = () => {
     <div className='min-h-screen w-full bg-light-skin pb-5'>
       (<PageWrapper heading='How to refinance a Student Loan' altText='Background Image' bgColor='#FBEED9' mainImage='/laptop composition video.svg' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
 
-        <LoanCalculator InputDataList={InputRangeData} formik={formik}></LoanCalculator>
+        <LoanCalculator InputDataList={InputRangeData} formik={formik}  heading='Student Loan Refinancing'></LoanCalculator>
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
       </PageWrapper>)
