@@ -141,7 +141,7 @@ const SingleLenderInfo = ({
     '>
             <div className='flex flex-col gap-4 lg:w-full'>
                 <div className='flex items-center  gap-1 lg:h-[58px] lg:justify-between lg:w-full'>
-                    <div className='font-bold text-2xl leading-[29.05px] lg:text-[40px] lg:leading-[58px] text-center '>
+                    <div className='font-bold text-2xl leading-[29.05px] lg:text-[30px] lg:leading-[58px] text-center '>
                         {lender?.name}
                     </div>
                     <div className='hidden lg:flex gap-4 '>
@@ -210,7 +210,7 @@ const SingleLenderInfo = ({
 
             <div className='h-full lg:hidden'>
 
-           <BrownLine height={true} />
+                <BrownLine height={true} />
             </div>
 
             <div className='flex flex-col gap-7 lg:hidden'>
