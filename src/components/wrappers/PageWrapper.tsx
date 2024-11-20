@@ -24,7 +24,7 @@ const PageWrapper = (data: PageWrapperProps) => {
         />
       </div>)}
 
-      <div className="justify-start flex h-full flex-col items-center px-5 lg:px-10 gap-5 lg:w-[561px] lg:items-start">
+      <div className="justify-start flex h-full flex-col items-center px-5 w-full lg:px-10 gap-5 lg:w-[561px] lg:items-start">
         <MainHeading heading={data?.heading} align="left" />
         <div className="text-[18px] leading-[1.3rem] lg:description-text-24">
           {data?.description}
