@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { FormikProps } from 'formik';
+import { FaPen } from "react-icons/fa";
 
 interface InputRangeBasicData {
   name: string;
@@ -34,8 +35,8 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
 
   return (
     <div className="w-full flex flex-col gap-4">
-      <div className="flex justify-between text-sm leading-[17px]">
-        <label htmlFor={data.SingleInputData.name} className="">
+      <div className="flex justify-between text-base leading-[17px]">
+        <label htmlFor={data.SingleInputData.name} className="text-base" >
           {data.SingleInputData.label}
         </label>
         <p
@@ -44,12 +45,13 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
         >
           {data.SingleInputData.type === 'currency' ? (
             <>
+              <FaPen className="inline-block mx-1" />
               Rs{' '}
               <span
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
                 onBlur={handleBlur}
-                className="outline-none focus:ring-0 cursor-auto" // Add these classes
+                className="outline-none focus:ring-0 cursor-auto text-base" // Add these classes
                 style={{
                   border: 'none',
                   boxShadow: 'none',
@@ -61,10 +63,12 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
             </>
           ) : data.SingleInputData.type === 'time' ? (
             <>
+              <FaPen className="inline-block mx-1" />
+
               <span
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
-               onBlur={handleBlur}
+                onBlur={handleBlur}
                 className="outline-none focus:ring-0 cursor-auto" // Add these classes
                 style={{
                   border: 'none',
@@ -78,6 +82,8 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
             </>
           ) : (
             <>
+              <FaPen className="inline-block mx-1" />
+
               <span
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
