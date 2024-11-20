@@ -59,7 +59,8 @@ interface LenderInfo {
   roi: string,
   amount: string,
   eligibility: string,
-  disbursement: string
+  disbursement: string,
+  logo: string
 }
 
 const StudentLoan = () => {

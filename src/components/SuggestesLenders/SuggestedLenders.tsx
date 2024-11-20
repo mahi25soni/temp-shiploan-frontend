@@ -10,6 +10,7 @@ interface LenderInfo {
     amount: string,
     eligibility: string,
     disbursement: string,
+    logo: string
 
 }
 
@@ -141,9 +142,16 @@ const SingleLenderInfo = ({
     '>
             <div className='flex flex-col gap-4 lg:w-full'>
                 <div className='flex items-center  gap-1 lg:h-[58px] lg:justify-between lg:w-full'>
-                    <div className='font-bold text-2xl leading-[29.05px] lg:text-[30px] lg:leading-[58px] text-center '>
-                        {lender?.name}
+                    <div className='flex flex-row gap-3'>
+                        <div className='relative lg:flex justify-center items-center hidden'>
+
+                            <Image src={lender?.logo} alt='Bank logo' height={30} width={30} />
+                        </div>
+                        <div className='font-bold text-2xl leading-[29.05px] lg:text-[30px] lg:leading-[58px] text-center '>
+                            {lender?.name}
+                        </div>
                     </div>
+
                     <div className='hidden lg:flex gap-4 '>
                         <div className={`flex justify-center items-center gap-3 p-4 description-text-18 rounded-32 cursor-pointer ${isSelected ? 'bg-black text-white' : 'bg-gray-opacity-5 text-black'}`} onClick={() => handleAddToCompareDesktop(lender)}>
                             <Image src='/PlusCircle.svg' width={18} height={18} alt="Add Button" className={`rounded-full ${isSelected ? "text-white bg-white" : "text-black"}`} />
