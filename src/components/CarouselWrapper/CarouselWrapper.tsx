@@ -83,8 +83,8 @@ const CarouselWrapper = () => {
         className="group absolute start-0 top-24 z-30 flex h-full cursor-pointer items-center justify-center  pl-4 lg:pl-8 lg:top-0"
         onClick={handlePrev}
       >
-        <div className="w-[42px] h-[52px] lg:w-[80px] lg:h-[100px] border-2 lg:border-[4.84px] rounded-32 lg:rounded-[77.45px] flex justify-center items-center border-light-range bg-white">
-          <FaChevronLeft className="text-range-line text-[20px] lg:text-[48.41px]" />
+        <div className="w-[42px] h-[52px] lg:w-[60px] lg:h-[70px] border-2 lg:border-[4.84px] rounded-32 lg:rounded-[77.45px] flex justify-center items-center border-light-range bg-white">
+          <FaChevronLeft className="text-range-line text-[20px] lg:text-[35px]" />
         </div>
 
 
@@ -96,8 +96,8 @@ const CarouselWrapper = () => {
         onClick={handleNext}
       >
 
-        <div className="w-[42px] h-[52px] lg:w-[80px] lg:h-[100px] border-2 lg:border-[4.84px] rounded-32 lg:rounded-[77.45px] flex justify-center items-center border-light-range bg-white">
-          <FaChevronRight className="text-range-line text-[20px] lg:text-[48.41px]" />
+        <div className="w-[42px] h-[52px] lg:w-[60px] lg:h-[70px] border-2 lg:border-[4.84px] rounded-32 lg:rounded-[77.45px] flex justify-center items-center border-light-range bg-white">
+          <FaChevronRight className="text-range-line text-[20px] lg:text-[35px]" />
         </div>
       </button>
     </div>
