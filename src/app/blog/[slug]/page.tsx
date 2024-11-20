@@ -30,14 +30,17 @@ const Blog = async ({ params }: { params: Params }) => {
                     alt={postData.blog_title}
                 />
             </div>
-            <MainHeading align='left' heading={postData?.blog_title} />
+            <div className='lg:min-w-[800px] flex flex-col w-full items-center'>
+                <MainHeading align='left' heading={postData?.blog_title} />
 
-            <div className='h-[41px]  border-y border-[#333333] border-opacity-15 w-full flex items-center'>
-                <div className="text-sm font-normal leading-4 text-black opacity-50">
-                    {postData.author} {" . "} {postData.date}
+                <div className='h-[41px]  border-y border-[#333333] border-opacity-15 w-full flex items-center'>
+                    <div className="text-sm font-normal leading-4 text-black opacity-50">
+                        {postData.author} {" . "} {postData.date}
+                    </div>
                 </div>
+                <div dangerouslySetInnerHTML={{ __html: postData.blog_content }} />
             </div>
-            <div dangerouslySetInnerHTML={{ __html: postData.blog_content }} />
+
         </div>
     )
 }
