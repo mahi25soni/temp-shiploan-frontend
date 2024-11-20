@@ -10,9 +10,9 @@ const NavbarItems: { [key: string]: string }[] = [
   { tab: "Home Loan", link: "/home-loan" },
   { tab: "Credit Card Debt", link: "/creditcard-loan" },
   { tab: "Student Loan", link: "/student-loan" },
-  { tab: "Contact Us", link: "/contact" },
-  { tab: "About Us", link: "/about" },
   { tab: "Blog", link: "/blog" },
+  { tab: "About Us", link: "/about" },
+  { tab: "Contact Us", link: "/contact" },
 ];
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
     <div className={`fixed left-0 top-0 z-50 flex w-full items-center justify-between ${isMobileMenuOpen ? "h-screen" : "h-[125px]"} bg-white/75 p-8 text-black backdrop-blur-lg transition-all duration-300`}>
       {/* Logo and List Icon (hidden when menu is open) */}
       {!isMobileMenuOpen && (
-        <div className="flex items-center gap-[20px] lg:gap-[58px]">
+        <div className="flex items-center gap-[20px] lg:gap-[40px]">
           <div className="relative">
             <Link href={"/"} passHref onClick={() => setSelectedTab("Home")}>
               <Image
