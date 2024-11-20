@@ -25,11 +25,11 @@ const BlogItem = (props: BlogItemInterface) => {
           fill
           className="object-fill"
         ></Image>
-        <div className="absolute bottom-6 pl-6 text-5xl font-bold leading-[45px] text-white line-clamp-3 pr-1">
+        <div className="absolute bottom-6 px-4 text-[30px] font-bold leading-[45px] text-white line-clamp-3 ">
           {props.blog_title}
         </div>
       </div>
-      <div className="line-clamp-2 text-[18px] font-bold leading-[22px]">
+      <div className="line-clamp-2 text-[18px] font-medium leading-[22px]">
         {props.blog_content}
       </div>
       <div className="text-sm font-normal leading-4">
@@ -40,7 +40,7 @@ const BlogItem = (props: BlogItemInterface) => {
 };
 
 const BlogListing = () => {
-  const {setSelectedTab} = useNavbar()
+  const { setSelectedTab } = useNavbar()
   const [blogDataArray, setBlogDataArray] = useState<BlogItemInterface[]>(data);
 
   useEffect(() => {
@@ -48,9 +48,9 @@ const BlogListing = () => {
   }, []);
   return (
 
-    <div className="lg:pl-[152px]">
+    <div className="lg:pl-[20px]">
       <MainHeading heading="Learn more ways to save" />
-      <div className="mt-10 pl-8 scrollbar-hidden flex flex-row w-full items-center justify-start gap-8 lg:gap-[90px] overflow-auto lg:pl-0 cursor-pointer">
+      <div className="mt-10 scrollbar-hidden flex flex-row w-full items-center justify-start gap-8 lg:gap-[50px] overflow-auto cursor-pointer">
         {blogDataArray?.map((blog, index) => {
           const slug = blog.blog_title.toLowerCase().replace(/ /g, '-');
 
