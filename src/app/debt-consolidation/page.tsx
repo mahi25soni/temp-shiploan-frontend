@@ -1,4 +1,5 @@
 "use client";
+import BlogListing from '@/components/BlogListing/BlogListing';
 import LoanCalculator from '@/components/CalculaterComponent/LoanCalculator'
 import LenderComparison from '@/components/LenderComparison/LenderComparison';
 import SuggestedLoan from '@/components/SuggestedLoan/SuggestedLoan';
@@ -88,6 +89,12 @@ const DebtConsolidation = () => {
       {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
       {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
       {lenderComparison && lenderComparisonArray?.length > 0 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
+
+
+      <div className='w-full py-[50px]'>
+        <BlogListing />
+
+      </div>
     </div>
 
   )
