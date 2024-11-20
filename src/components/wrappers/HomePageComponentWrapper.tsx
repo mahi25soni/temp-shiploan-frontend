@@ -20,7 +20,7 @@ const HomePageComponentWrapper = (data: HomePageComponentWrapperProps) => {
       }}
     >
       <div className="flex w-full flex-col  items-center gap-10 lg:flex-row lg:justify-center lg:gap-20">
-        <div className="relative h-[292px] w-[282px] lg:h-[544px] lg:w-[526px]">
+        <div className="relative h-[292px] w-[282px] lg:h-[500px] lg:w-[526px]">
           <Image
             src={data?.mainImage}
             layout="fill"
