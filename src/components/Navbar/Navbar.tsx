@@ -49,7 +49,7 @@ const Navbar = () => {
             <Link key={index} href={item.link} passHref>
               <div
                 onClick={() => handleSelectTab(item.tab)}
-                className={`hidden cursor-pointer text-base lg:block ${selectedTab === item.tab ? "font-bold" : "font-normal opacity-50"}`}
+                className={`hidden cursor-pointer text-base xl:block ${selectedTab === item.tab ? "font-bold" : "font-normal opacity-50"}`}
               >
                 {item.tab}
               </div>
@@ -60,7 +60,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Icon (only shows when menu is closed) */}
       {!isMobileMenuOpen && (
-        <div className="relative h-8 w-8 lg:hidden" onClick={toggleMobileMenu}>
+        <div className="relative h-8 w-8 xl:hidden" onClick={toggleMobileMenu}>
           <Image src="/List.svg" fill alt="menu" className="object-fill cursor-pointer" />
         </div>
       )}
