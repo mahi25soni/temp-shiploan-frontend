@@ -10,7 +10,7 @@ interface SuggestedLoanProps {
 
 const SuggestedLoan = (data: SuggestedLoanProps) => {
     return (
-        <div className='flex  flex-col items-center gap-4 justify-start  lg:flex-row lg:justify-between w-full lg:px-[134px]  lg:pb-[122px] pb-10'>
+        <div className='flex  flex-col items-center gap-4 justify-start  lg:flex-row lg:justify-between w-full lg:px-[134px]  lg:pb-[122px] pb-10 pt-10'>
             <div className='px-5 lg:px-10 lg:w-[561px]'>
                 <MainHeading heading={"Congratulations! You can save"} />
             </div>
