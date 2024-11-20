@@ -14,15 +14,15 @@ const InputRangeData = [
     name: 'outstanding_amount',
     label: 'Outstanding Amount',
     minValue: 0,
-    maxValue: 100000, // In Rupees
+    maxValue: 10000000, // In Rupees
     step: 1,
     type: "currency"
   },
   {
     name: 'tenure',
-    label: 'Tenure',
+    label: 'Payment Tenure',
     minValue: 0,
-    maxValue: 18, // In months
+    maxValue: 60, // In months
     step: 1,
     type: "time"
   },
@@ -99,7 +99,7 @@ const CreditCardLoan = () => {
         {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
 
       </PageWrapper>)
-      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray}/>}
+      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
       {lenderComparison && lenderComparisonArray?.length > 0 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
     </div >
 

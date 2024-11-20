@@ -14,15 +14,15 @@ const InputRangeData = [
     name: 'amount',
     label: 'Amount',
     minValue: 0,
-    maxValue: 100000, // In Rupees
+    maxValue: 10000000, // In Rupees
     step: 1,
     type: "currency"
   },
   {
     name: 'payment',
-    label: 'Payment',
+    label: 'Payment Tenure',
     minValue: 0,
-    maxValue: 18, // In months
+    maxValue: 60, // In months
     step: 1,
     type: "time"
   },
