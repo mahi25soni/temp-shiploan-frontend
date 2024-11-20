@@ -31,7 +31,7 @@ const HomePageComponentWrapper = (data: HomePageComponentWrapperProps) => {
         <div className="flex flex-col gap-10 lg:w-[500px] h-full items-center lg:items-start">
 
           <MainHeading heading={data?.heading} />
-          <div className="description-text-14 line-clamp-4 hidden lg:block">
+          <div className="text-[18px] leading-[1.3rem] line-clamp-4 hidden lg:block">
             {data?.description}
           </div>
           {data?.children}
