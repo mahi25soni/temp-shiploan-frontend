@@ -13,6 +13,7 @@ const HomePageComponentWrapper = dynamic(() => import("@/components/wrappers/Hom
 
 
 const LoanOptions: { [key: string]: string }[] = [
+  { tab: "Debt Consolidation", link: "/debt-consolidation" },
   { tab: "Home Loan", link: "/home-loan" },
   { tab: "Credit Card Debt", link: "/creditcard-loan" },
   { tab: "Student Loan", link: "/student-loan" },
@@ -39,25 +40,19 @@ const HomePage = (props: Props) => {
         description="Lorem ipsum dolor sit amet consectetur. Diam sed mattis facilisis eget tellus dui augue sagittis ultricies. Scelerisque elit duis in tortor. Volutpat elit neque in sem nulla quam imperdiet. Mi nisl sem amet odio."
         altText="kuchh bhi rakhlo"
       >
-        <div className="flex flex-row scrollbar-hidden p-2 border-y border-light-gray gap-[20px] overflow-auto max-w-[375px] lg:max-w-full items-center justify-start">
+        <div className="flex flex-col gap-4 items-center">
           {LoanOptions.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => setTempSelectedTab(item?.tab)}
-              className={`text-2xl leading-9 whitespace-nowrap cursor-pointer ${tempSelectedTab !== item.tab ? "opacity-20" : ""
-                }`}
-            >
-              {item.tab}
-            </div>
+            <Link key={index} href={item.link} passHref>
+              <button
+                onClick={() => setTempSelectedTab(item?.tab)}
+                className="w-[270px] rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange"
+              >
+                {item.tab}
+              </button>
+            </Link>
           ))}
         </div>
 
-
-        <Link href={selectedTabLink} passHref onClick={() => setSelectedTab(tempSelectedTab)}>
-          <button className="w-[270px] rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange">
-            Start Saving
-          </button>
-        </Link>
       </HomePageComponentWrapper>
       <BlogListing />
       <HomePageComponentWrapper
