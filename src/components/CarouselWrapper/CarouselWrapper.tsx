@@ -55,7 +55,7 @@ const CarouselWrapper = () => {
               <div className="line-clamp-2 text-[32px] font-bold leading-[48px] lg:text-[48px] lg:leading-[72px]">
                 {slide?.title}
               </div>
-              <div className="line-clamp-3 text-[18px] leading-5 lg:line-clamp-none">
+              <div className="line-clamp-3 text-[18px] leading-[1.3rem] lg:line-clamp-none">
                 {slide?.desc}
               </div>
               <Link href={slides[activeSlide]?.redirectUrl} key={index} className="w-full" onClick={() => setSelectedTab(slides[activeSlide]?.tab)}>
