@@ -10,6 +10,7 @@ type Props = {};
 const CarouselWrapper = dynamic(() => import("@/components/CarouselWrapper/CarouselWrapper"));
 const BlogListing = dynamic(() => import("@/components/BlogListing/BlogListing"));
 const HomePageComponentWrapper = dynamic(() => import("@/components/wrappers/HomePageComponentWrapper"));
+import Faq from "@/components/Faq/Faq";
 
 
 const LoanOptions: { [key: string]: string }[] = [
@@ -78,7 +79,9 @@ const HomePage = (props: Props) => {
             />
           </button>
         </div>
+
       </HomePageComponentWrapper>
+      <Faq />
     </div>
   );
 };
