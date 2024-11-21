@@ -35,22 +35,7 @@ const InputRangeData = [
     step: 0.1,
     type: "percentage"
   },
-  {
-    name: 'emi',
-    label: 'EMI',
-    minValue: 0,
-    maxValue: 100000, // In Rupees
-    step: 1,
-    type: "currency"
-  },
-  {
-    name: 'proposed_roi',
-    label: 'Proposed ROI',
-    minValue: 0,
-    maxValue: 15, // In Rupees
-    step: 0.1,
-    type: "percentage"
-  }
+
 ]
 
 interface LenderInfo {
@@ -78,8 +63,7 @@ const CreditCardLoan = () => {
       outstanding_amount: 0,
       tenure: 0,
       current_roi: 0,
-      emi: 0,
-      proposed_roi: 0,
+
     },
     onSubmit: (values) => {
       setSuggestedLoanData({
