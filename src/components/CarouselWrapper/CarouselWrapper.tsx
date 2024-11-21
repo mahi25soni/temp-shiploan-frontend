@@ -12,7 +12,8 @@ interface SlideDataInterface {
   bgImage: string;
   bgColor: string;
   redirectUrl: string,
-  tab: string
+  tab: string,
+  ctaName: string;
 }
 
 const slides: SlideDataInterface[] = CarouselSampleData
@@ -60,7 +61,7 @@ const CarouselWrapper = () => {
               </div>
               <Link href={slides[activeSlide]?.redirectUrl} key={index} className="w-full" onClick={() => setSelectedTab(slides[activeSlide]?.tab)}>
                 <button className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange lg:w-[238px]">
-                  Start Saving
+                  {slide?.ctaName}
                 </button>
               </Link>
             </div>

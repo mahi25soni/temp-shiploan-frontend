@@ -17,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <title>
+      Take Charge of Your Loans: Snip Your EMIs!
+      </title>
       <body
         className="relative h-full min-h-screen"
       >

@@ -95,7 +95,7 @@ const CreditCardLoan = () => {
   return (
 
     < div className='min-h-screen w-full bg-light-blue pb-5' >
-      <PageWrapper heading='Balance Transfer on Credit Card Debt' altText='Background Image' bgColor='#D5E8ED' mainImage='/credit cards.svg' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+      <PageWrapper heading='Take Control of Your Credit Card Debt' altText='Background Image' bgColor='#D5E8ED' mainImage='/credit cards.svg' description='Estimate your savings from transferring balances and reducing high-interest payments. Understanding your options empowers you to break free from debt and regain financial stability.'>
 
         <LoanCalculator InputDataList={InputRangeData} formik={formik} heading='Credit Card Balance Transfer'></LoanCalculator>
 
