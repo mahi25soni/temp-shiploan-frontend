@@ -66,9 +66,9 @@ const HomeLoan = () => {
     },
     onSubmit: (values) => {
       setSuggestedLoanData({
-        amount: 10000,
-        tenure: 15,
-        roi: 10.1
+        amount: values?.outstanding_amount,
+        tenure: values?.tenure,
+        roi: values?.current_roi
       })
       setSuggestLoan(true)
     },
