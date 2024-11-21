@@ -202,7 +202,7 @@ const SingleLenderInfo = ({
                             Current EMI
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
-                            {"₹" + lender?.current_emi}
+                            {"₹ " + lender?.current_emi}
 
                         </div>
                     </div>
@@ -211,7 +211,7 @@ const SingleLenderInfo = ({
                             New EMI
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
-                            {"₹" + lender?.current_emi}
+                            {"₹ " + lender?.current_emi}
 
                         </div>
                     </div>
@@ -231,7 +231,7 @@ const SingleLenderInfo = ({
                         Current EMI
                     </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {"₹" + lender?.current_emi}
+                        {"₹ " + lender?.current_emi}
 
                     </div>
                 </div>
@@ -241,7 +241,7 @@ const SingleLenderInfo = ({
                         New EMI
                     </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {"₹" + lender?.current_emi}
+                        {"₹ " + lender?.current_emi}
 
                     </div>
                 </div>

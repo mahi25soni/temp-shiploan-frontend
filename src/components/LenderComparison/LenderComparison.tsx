@@ -27,39 +27,51 @@ const LenderComparison = ({ data }: props) => {
         <table className=" w-full  bg-white border border-gray-300 text-center table-fixed">
           <thead>
             <tr className="">
-              <th className="py-4 px-6 font-bold text-[18px] lg:text-[30px] border-b border-gray-300">{data?.[0]?.name}</th>
-              <th className="py-4 px-6 font-bold text-[18px] lg:text-[30px] border-b border-gray-300">{data?.[1]?.name}</th>
+              <th className="py-4 px-6 font-bold text-[18px] lg:text-[30px] border-b border-gray-300">{data?.[0]?.bank_name}</th>
+              <th className="py-4 px-6 font-bold text-[18px] lg:text-[30px] border-b border-gray-300">{data?.[1]?.bank_name}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px]  border-t border-gray-300">ROI</td>
+              <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px]  border-t border-gray-300">Interest</td>
             </tr>
             <tr>
-              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.roi}</td>
-              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.roi}</td>
+              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
+                {data?.[0]?.interest_rate ? data?.[0]?.interest_rate + " %" : ""}
+              </td>
+              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
+                {data?.[1]?.interest_rate ? data?.[0]?.interest_rate + " %" : ""}
+              </td>
             </tr>
             <tr>
-              <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">Amount</td>
+              <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">Current EMI</td>
             </tr>
             <tr>
-              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.amount}</td>
-              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.amount}</td>
+              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
+                {data?.[0]?.current_emi ? "₹ " + data?.[0]?.current_emi : ""}
+              </td>
+              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
+                {data?.[1]?.current_emi ? "₹ " + data?.[1]?.current_emi : ""}
+              </td>
             </tr>
             <tr>
-              <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px]  border-t border-gray-300">Eligibility</td>
+              <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px]  border-t border-gray-300">New EMI</td>
             </tr>
             <tr>
-              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.eligibility}</td>
-              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.eligibility}</td>
+              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
+                {data?.[0]?.new_emi ? "₹ " + data?.[0]?.new_emi : ""}
+              </td>
+              <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
+                {data?.[1]?.new_emi ? "₹ " + data?.[1]?.new_emi : ""}
+              </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">Disbursement Period</td>
             </tr>
             <tr>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[0]?.disbursement}</td>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">{data?.[1]?.disbursement}</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
