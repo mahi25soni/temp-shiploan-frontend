@@ -9,6 +9,8 @@ import SuggestedLoanWrapper from '@/components/wrappers/SuggestedLoanWrapper';
 import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
+import axios from "../../../../axios"
+
 
 const InputRangeData = [
   {
@@ -40,11 +42,10 @@ const InputRangeData = [
 
 interface LenderInfo {
   id: string,
-  name: string,
-  roi: string,
-  amount: string,
-  eligibility: string,
-  disbursement: string,
+  bank_name: string,
+  interest_rate: number,
+  current_emi: number,
+  new_emi: number,
   logo: string
 }
 
@@ -76,7 +77,15 @@ const HomeLoan = () => {
   })
 
   const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>([])
-  const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
+  const [lenderArray, setLenderArray] = useState<LenderInfo[]>([])
+
+  const handleSuggestedLenders = async () => {
+    const { data } = await axios.post("/calculate/loan-emi", { ...suggestedLoanData, type: 'Home Loan' })
+
+    setLenderArray(data?.data)
+    setSuggestLenders(true)
+
+  }
   return (
     <div className='min-h-full w-full bg-light-green pb-5'>
       <PageWrapper heading='Balance Transfer on a Home Loan' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.svg' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
@@ -85,7 +94,7 @@ const HomeLoan = () => {
 
 
       </PageWrapper>
-      {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
+      {suggestLoan && <SuggestedLoan {...suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
       {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
       {lenderComparison && lenderComparisonArray?.length > 0 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
 

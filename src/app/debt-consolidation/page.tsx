@@ -9,6 +9,8 @@ import SuggestedLoanWrapper from '@/components/wrappers/SuggestedLoanWrapper';
 import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
+import axios from "../../../axios"
+
 
 const InputRangeData = [
   {
@@ -40,11 +42,10 @@ const InputRangeData = [
 
 interface LenderInfo {
   id: string,
-  name: string,
-  roi: string,
-  amount: string,
-  eligibility: string,
-  disbursement: string,
+  bank_name: string,
+  interest_rate: number,
+  current_emi: number,
+  new_emi: number,
   logo: string
 }
 
@@ -75,7 +76,17 @@ const DebtConsolidation = () => {
     },
   })
   const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>([])
-  const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
+  const [lenderArray, setLenderArray] = useState<LenderInfo[]>([])
+
+  const handleSuggestedLenders = async () => {
+    const { data } = await axios.post("/calculate/loan-emi", { ...suggestedLoanData, type: 'Debt Consolidation Loan' })
+
+    setLenderArray(data?.data)
+    setSuggestLenders(true)
+
+  }
+
+
   return (
 
 
@@ -86,7 +97,7 @@ const DebtConsolidation = () => {
 
 
       </PageWrapper>
-      {suggestLoan && <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
+      {suggestLoan && <SuggestedLoan {...suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
       {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
       {lenderComparison && lenderComparisonArray?.length > 0 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
 

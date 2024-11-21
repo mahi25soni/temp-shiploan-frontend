@@ -3,11 +3,10 @@ import React from 'react';
 
 interface LenderInfo {
   id: string,
-  name: string,
-  roi: string,
-  amount: string,
-  eligibility: string,
-  disbursement: string,
+  bank_name: string,
+  interest_rate: number,
+  current_emi: number,
+  new_emi: number,
   logo: string
 }
 

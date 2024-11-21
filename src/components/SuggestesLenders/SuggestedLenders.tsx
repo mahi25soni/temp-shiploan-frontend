@@ -5,11 +5,10 @@ import BrownLine from '../atoms/BrownLine';
 
 interface LenderInfo {
     id: string,
-    name: string,
-    roi: string,
-    amount: string,
-    eligibility: string,
-    disbursement: string,
+    bank_name: string,
+    interest_rate: number,
+    current_emi: number,
+    new_emi: number,
     logo: string
 
 }
@@ -26,6 +25,9 @@ const SuggestedLenders = (data: props) => {
     const [firstLenderCandidate, setFirstLenderCandidate] = useState<LenderInfo | null>(null)
     const [secondLenderCandidate, setSecondLenderCandidate] = useState<LenderInfo | null>(null)
     const [selectedLenderIds, setSelectedLenderIds] = useState<string[]>([])
+
+
+    console.log("The data in suggested lenders ", data)
 
 
 
@@ -81,12 +83,12 @@ const SuggestedLenders = (data: props) => {
                 data?.lenderComparisonArray.length > 0 && <div className='shadow-[0_2px_8px_rgba(0,0,0,0.25)] p-6 flex flex-col lg:hidden rounded-2xl w-[353px] bg-white gap-4 sticky top-[130px] left-0 z-10'>
                     <div className='flex items-center justify-around h-[29px]'>
                         <div className='description-text-24 font-bold text-center   '>
-                            {data?.lenderComparisonArray?.[0]["name"]}
+                            {data?.lenderComparisonArray?.[0]["bank_name"]}
 
                         </div>
                         <BrownLine height={true} />
                         <div className='description-text-24 font-bold text-center'>
-                            {data?.lenderComparisonArray.length > 1 ? data?.lenderComparisonArray?.[1]["name"] : <Image src='/PlusCircle.svg' width={18} height={18} alt="Add Button" className='rounded-full' />}
+                            {data?.lenderComparisonArray.length > 1 ? data?.lenderComparisonArray?.[1]["bank_name"] : <Image src='/PlusCircle.svg' width={18} height={18} alt="Add Button" className='rounded-full' />}
                         </div>
                     </div>
                     <button disabled={data?.lenderComparisonArray.length === 2 ? false : true} onClick={compareLenders} className={` p-4 rounded-32 border   w-full description-text-18 font-bold  ${data?.lenderComparisonArray.length === 2 ? 'border-light-gray text-light-gray' : 'border-gray-opacity-20 text-gray-opacity-20'}`}>
@@ -110,7 +112,7 @@ const SuggestedLenders = (data: props) => {
 
             </div>
 
-            {data?.lenderArray.map((lender, index) => {
+            {data?.lenderArray?.map((lender, index) => {
                 return (
                     <SingleLenderInfo lender={lender} key={index} handleAddToCompare={handleAddToCompare} handleAddToCompareDesktop={handleAddToCompareDesktop} selectedLenderIds={selectedLenderIds} />
                 )
@@ -148,7 +150,7 @@ const SingleLenderInfo = ({
                             <Image src={lender?.logo} alt='Bank logo' height={30} width={30} />
                         </div>
                         <div className='font-bold text-2xl leading-[29.05px] lg:text-[30px] lg:leading-[58px] text-center '>
-                            {lender?.name}
+                            {lender?.bank_name}
                         </div>
                     </div>
 
@@ -179,36 +181,38 @@ const SingleLenderInfo = ({
                 <div className='flex gap-4 items-center justify-start lg:justify-between w-full'>
                     <div className='flex flex-col gap-1 '>
                         <div className='text-xs leading-[14.52px] lg:text-[18px] lg:leading-[29.05px] '>
-                            ROI
+                            Interest Rate
                         </div>
                         <div className='text-sm font-bold leading-[16.94px]  lg:text-[18px] lg:leading-[38.73px]'>
-                            {lender?.roi}
+                            {lender?.interest_rate} %
                         </div>
                     </div>
-                    <div className='flex flex-col gap-1 '>
+                    {/* <div className='flex flex-col gap-1 '>
                         <div className='text-xs leading-[14.52px] text-[#000000] lg:text-[18px] lg:leading-[29.05px] '>
                             Amount
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
                             {lender?.amount}
                         </div>
-                    </div>
+                    </div> */}
 
 
                     <div className='hidden lg:flex flex-col gap-1 '>
                         <div className='text-xs leading-[14.52px] text-[#000000] lg:text-[18px] lg:leading-[29.05px] '>
-                            Eligiblity
+                            Current EMI
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
-                            {lender?.eligibility}
+                            {"₹" + lender?.current_emi}
+
                         </div>
                     </div>
                     <div className='hidden lg:flex flex-col gap-1 '>
                         <div className='text-xs leading-[14.52px] text-[#000000] lg:text-[18px] lg:leading-[29.05px] '>
-                            Disbursement
+                            New EMI
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
-                            {lender?.disbursement}
+                            {"₹" + lender?.current_emi}
+
                         </div>
                     </div>
 
@@ -224,19 +228,21 @@ const SingleLenderInfo = ({
             <div className='flex flex-col gap-7 lg:hidden'>
                 <div className='flex flex-col gap-1 '>
                     <div className='text-xs leading-[14.52px] text-[#000000]'>
-                        Eligiblity
+                        Current EMI
                     </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {lender?.eligibility}
+                        {"₹" + lender?.current_emi}
+
                     </div>
                 </div>
                 {/* <div ></div> */}
                 <div className='flex flex-col gap-1 '>
                     <div className='text-xs leading-[14.52px] text-[#000000]'>
-                        Disbursement
+                        New EMI
                     </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {lender?.disbursement}
+                        {"₹" + lender?.current_emi}
+
                     </div>
                 </div>
             </div>

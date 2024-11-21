@@ -9,6 +9,7 @@ import SuggestedLoanWrapper from '@/components/wrappers/SuggestedLoanWrapper';
 import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
+import axios from "../../../../axios"
 
 const InputRangeData = [
   {
@@ -40,11 +41,10 @@ const InputRangeData = [
 
 interface LenderInfo {
   id: string,
-  name: string,
-  roi: string,
-  amount: string,
-  eligibility: string,
-  disbursement: string,
+  bank_name: string,
+  interest_rate: number,
+  current_emi: number,
+  new_emi: number,
   logo: string
 }
 
@@ -74,8 +74,16 @@ const CreditCardLoan = () => {
       setSuggestLoan(true)
     },
   })
-  const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>([])
-  const [lenderArray, setLenderArray] = useState<LenderInfo[]>(LenderSampleData)
+  const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>(LenderSampleData)
+  const [lenderArray, setLenderArray] = useState<LenderInfo[]>([])
+
+  const handleSuggestedLenders = async () => {
+    const { data } = await axios.post("/calculate/loan-emi", { ...suggestedLoanData, type: 'Credit Card Loan' })
+
+    setLenderArray(data?.data)
+    setSuggestLenders(true)
+
+  }
   return (
 
     < div className='min-h-screen w-full bg-light-blue pb-5' >
@@ -83,11 +91,12 @@ const CreditCardLoan = () => {
 
         <LoanCalculator InputDataList={InputRangeData} formik={formik} heading='Credit Card Balance Transfer'></LoanCalculator>
 
-
       </PageWrapper>
       {suggestLoan &&
-        <SuggestedLoan {...suggestedLoanData} setSuggestedLenders={setSuggestLenders} />}
+        <SuggestedLoan {...suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
+
       {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
+
       {lenderComparison && lenderComparisonArray?.length > 0 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
 
       <div className='w-full py-[50px]'>
