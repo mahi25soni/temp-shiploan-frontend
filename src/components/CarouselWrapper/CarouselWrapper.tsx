@@ -3,7 +3,7 @@ import { useNavbar } from "@/context/contextApi";
 import { CarouselSampleData } from "@/testdata/carousel-data";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface SlideDataInterface {
@@ -28,6 +28,16 @@ const CarouselWrapper = () => {
   const handleNext = () => {
     setActiveSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
+
+  // Automatically change the slide every 4 seconds
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setActiveSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 4000); // Change slide every 4000ms (4 seconds)
+
+    // Clear the interval when the component unmounts or the slide changes
+    return () => clearInterval(slideInterval);
+  }, [activeSlide]);
 
 
   return (
