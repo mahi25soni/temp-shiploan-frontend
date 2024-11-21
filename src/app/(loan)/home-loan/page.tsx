@@ -88,7 +88,7 @@ const HomeLoan = () => {
   }
   return (
     <div className='min-h-full w-full bg-light-green pb-5'>
-      <PageWrapper heading='Balance Transfer on a Home Loan' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.svg' description='Lorem ipsum dolor sit amet consectetur. Semper sed malesuada quisque orci tincidunt lectus sollicitudin quam. Convallis in nisl odio enim arcu neque. Nulla ipsum venenatis volutpat eu. Venenatis nisi.'>
+      <PageWrapper heading='Maximize Your Home Loan Saving' altText='Background Image' bgColor='#D1E6DF' mainImage='/small house in winter forest.svg' description='Discover the savings you can achieve by transferring your home loan to a lower rate. Visualizing potential savings helps you take the next step toward more manageable monthly payments.'>
 
         <LoanCalculator InputDataList={InputRangeData} formik={formik} heading='Home Loan Balance Transfer'></LoanCalculator>
 
