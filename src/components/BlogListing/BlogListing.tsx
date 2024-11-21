@@ -17,7 +17,7 @@ const data: BlogItemInterface[] = BlogSampleData;
 
 const BlogItem = (props: BlogItemInterface) => {
   return (
-    <div className="flex h-[423px] min-w-[317px] flex-col gap-[25px]">
+    <div className="flex h-[423px] min-w-[317px] flex-col gap-[25px] pb-3">
       <div className="relative h-[314px] w-full rounded-32 border-basic">
         <Image
           src="/blogbg1.svg"
