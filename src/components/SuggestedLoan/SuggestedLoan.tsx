@@ -40,7 +40,7 @@ const SuggestedLoan = (data: SuggestedLoanProps) => {
                     </div>
                     <div className='flex justify-between items-center'>
                         <div className='text-sm leading-[16.94px] text-[#48454C]'>
-                            Amount
+                            Rate of interest
                         </div>
                         <div className='text-sm font-medium text-[#333333]'>
                             {data?.roi}{" %"}

@@ -44,8 +44,8 @@ const InputRangeData = [
     type: "currency"
   },
   {
-    name: 'proposed_emi',
-    label: 'Proposed EMI',
+    name: 'proposed_roi',
+    label: 'Proposed ROI',
     minValue: 0,
     maxValue: 15, // In Rupees
     step: 0.1,
@@ -78,7 +78,7 @@ const HomeLoan = () => {
       tenure: 0,
       current_roi: 0,
       emi: 0,
-      proposed_emi: 0,
+      proposed_roi: 0,
     },
     onSubmit: (values) => {
       setSuggestedLoanData({
