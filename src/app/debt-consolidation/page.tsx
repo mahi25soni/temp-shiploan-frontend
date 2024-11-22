@@ -10,6 +10,7 @@ import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import axios from "../../../axios"
+import DebtLoanCalculator from '@/components/CalculaterComponent/DebtLoanCalculator';
 
 
 const InputRangeData = [
@@ -67,11 +68,11 @@ const DebtConsolidation = () => {
       interest: 0,
     },
     onSubmit: (values) => {
-      setSuggestedLoanData({
-        amount: values.amount,
-        tenure: values.payment,
-        roi: values.interest
-      })
+      // setSuggestedLoanData({
+      //   amount: values.amount,
+      //   tenure: values.payment,
+      //   roi: values.interest
+      // })
       setSuggestLoan(true)
     },
   })
@@ -93,7 +94,8 @@ const DebtConsolidation = () => {
     <div className='min-h-screen w-full bg-light-purple pb-5'>
       <PageWrapper heading='Unlock Your Savings Potential' altText='Background Image' bgColor='#FBEED9' mainImage='/money and pie chart.svg' description='Calculate how consolidating your debts can simplify payments and save you money. With clear insights, you can make informed decisions that could lead to a brighter financial future.'>
 
-        <LoanCalculator InputDataList={InputRangeData} formik={formik} heading='Debt Consolidation Calculator'></LoanCalculator>
+        <DebtLoanCalculator InputDataList={InputRangeData} formik={formik} heading='Debt Consolidation Calculator'></DebtLoanCalculator>
+
 
 
       </PageWrapper>
