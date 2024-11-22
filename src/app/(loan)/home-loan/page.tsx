@@ -80,7 +80,7 @@ const HomeLoan = () => {
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>([])
 
   const handleSuggestedLenders = async () => {
-    const { data } = await axios.post("/calculate/loan-emi", { ...suggestedLoanData, type: 'Home Loan' })
+    const { data } = await axios.post("/calculate/home-loan", { ...suggestedLoanData, type: 'Home Loan' })
 
     setLenderArray(data?.data)
     setSuggestLenders(true)

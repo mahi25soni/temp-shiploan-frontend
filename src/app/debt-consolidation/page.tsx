@@ -80,7 +80,7 @@ const DebtConsolidation = () => {
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>([])
 
   const handleSuggestedLenders = async () => {
-    const { data } = await axios.post("/calculate/loan-emi", { ...suggestedLoanData, type: 'Debt Consolidation Loan' })
+    const { data } = await axios.post("/calculate/debt-consolidation", { ...suggestedLoanData, type: 'Debt Consolidation Loan' })
 
     setLenderArray(data?.data)
     setSuggestLenders(true)
