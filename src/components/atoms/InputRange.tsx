@@ -15,6 +15,7 @@ interface InputRangeBasicData {
 interface InputRangeProps {
   SingleInputData: InputRangeBasicData;
   formik: FormikProps<any>;
+  loanIndex?: number
 }
 
 const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
@@ -33,6 +34,8 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
     setIsEditing(false);
   };
 
+
+  console.log("the data is", data)
   return (
     <div className="w-full flex flex-col gap-4">
       <div className="flex justify-between text-base leading-[17px]">
@@ -58,7 +61,8 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
                   backgroundColor: 'transparent',
                 }}
               >
-                {data.formik.values[data.SingleInputData.name]}
+                {typeof data?.loanIndex === 'number' ? data?.formik.values.calculators[data?.loanIndex][data.SingleInputData.name] : data.formik.values[data.SingleInputData.name]}
+
               </span>
             </>
           ) : data.SingleInputData.type === 'time' ? (
@@ -76,7 +80,7 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
                   backgroundColor: 'transparent',
                 }}
               >
-                {data.formik.values[data.SingleInputData.name]}
+                {typeof data?.loanIndex === 'number' ? data?.formik.values.calculators[data?.loanIndex][data.SingleInputData.name] : data.formik.values[data.SingleInputData.name]}
               </span>{' '}
               mo
             </>
@@ -95,7 +99,7 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
                   backgroundColor: 'transparent',
                 }}
               >
-                {data.formik.values[data.SingleInputData.name]}
+                {typeof data?.loanIndex === 'number' ? data?.formik.values.calculators[data?.loanIndex][data.SingleInputData.name] : data.formik.values[data.SingleInputData.name]}
               </span>{' '}
               %
             </>
@@ -107,13 +111,20 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
         max={data.SingleInputData.maxValue}
         min={data.SingleInputData.minValue}
         className="appearance-none w-full h-[3px] bg-range-text rounded-lg cursor-pointer border-none m-0 p-0"
-        onChange={(e) =>
-          data.formik.setFieldValue(
-            data.SingleInputData.name,
-            parseFloat(e.target.value)
-          )
-        }
-        value={data.formik.values[data.SingleInputData.name]}
+        onChange={(e) => {
+          if (typeof data?.loanIndex === 'number') {
+            console.log("loan Index wala chal gaya")
+            data.formik.setFieldValue(`calculators[${data?.loanIndex}][${data.SingleInputData.name}]`, parseFloat(e.target.value))
+          } else {
+            console.log("loan Index wala nahi chala")
+            data.formik.setFieldValue(data.SingleInputData.name, parseFloat(e.target.value))
+          }
+
+        }}
+        value={typeof data?.loanIndex === 'number'
+          ? data?.formik.values.calculators[data?.loanIndex][data.SingleInputData.name] || 0
+          : data.formik.values[data.SingleInputData.name] || 0}
+
         step={data.SingleInputData.step}
       />
     </div>

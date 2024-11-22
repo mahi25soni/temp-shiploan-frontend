@@ -63,9 +63,7 @@ const DebtConsolidation = () => {
   })
   const formik = useFormik({
     initialValues: {
-      amount: 0,
-      payment: 0,
-      interest: 0,
+      calculators: [{ amount: 0, payment: 0, interest: 0 }],
     },
     onSubmit: (values) => {
       // setSuggestedLoanData({
@@ -73,6 +71,8 @@ const DebtConsolidation = () => {
       //   tenure: values.payment,
       //   roi: values.interest
       // })
+
+      console.log("the values are ", values)
       setSuggestLoan(true)
     },
   })
@@ -87,6 +87,20 @@ const DebtConsolidation = () => {
 
   }
 
+  const addCalculator = () => {
+    formik.setFieldValue("calculators", [
+      ...formik.values.calculators,
+      { amount: 0, payment: 0, interest: 0 },
+    ]);
+  };
+
+  const removeCalculator = (index: number) => {
+    const updatedCalculators = formik.values.calculators.filter(
+      (_, idx) => idx !== index
+    );
+    formik.setFieldValue("calculators", updatedCalculators);
+  };
+
 
   return (
 
@@ -94,7 +108,11 @@ const DebtConsolidation = () => {
     <div className='min-h-screen w-full bg-light-purple pb-5'>
       <PageWrapper heading='Unlock Your Savings Potential' altText='Background Image' bgColor='#FBEED9' mainImage='/money and pie chart.svg' description='Calculate how consolidating your debts can simplify payments and save you money. With clear insights, you can make informed decisions that could lead to a brighter financial future.'>
 
-        <DebtLoanCalculator InputDataList={InputRangeData} formik={formik} heading='Debt Consolidation Calculator'></DebtLoanCalculator>
+
+        <DebtLoanCalculator InputDataList={InputRangeData} formik={formik} heading='Debt Consolidation Calculator' addCalculator={addCalculator} removeCalculator={removeCalculator}></DebtLoanCalculator>
+
+
+
 
 
 
