@@ -63,16 +63,17 @@ const DebtConsolidation = () => {
   })
   const formik = useFormik({
     initialValues: {
+      loan_term: 0,
+      consolidation_interest_rate: 0,
       calculators: [{ monthly_payment: 0, remaining_tenure: 0, interest: 0 }],
     },
     onSubmit: (values) => {
-      // setSuggestedLoanData({
-      //   amount: values.amount,
-      //   tenure: values.payment,
-      //   roi: values.interest
-      // })
+      setSuggestedLoanData({
+        amount: 10000,
+        tenure: 10000,
+        roi: 10000
+      })
 
-      console.log("the values are ", values)
       setSuggestLoan(true)
     },
   })
@@ -80,10 +81,12 @@ const DebtConsolidation = () => {
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>([])
 
   const handleSuggestedLenders = async () => {
-    const { data } = await axios.post("/calculate/debt-consolidation", { ...suggestedLoanData, type: 'Debt Consolidation Loan' })
+    const { data } = await axios.post("/calculate/debt-consolidation", { ...formik?.values })
 
-    setLenderArray(data?.data)
-    setSuggestLenders(true)
+    console.log("some data is ", data)
+
+    // setLenderArray(data?.data)
+    // setSuggestLenders(true)
 
   }
 

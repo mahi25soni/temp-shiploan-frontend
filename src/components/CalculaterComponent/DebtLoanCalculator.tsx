@@ -4,6 +4,25 @@ import React, { useEffect, useState } from "react";
 import InputRange from "../atoms/InputRange";
 import Image from "next/image";
 
+
+const LoanTermField = {
+    name: 'loan_term',
+    label: 'Loan Repainment Tern',
+    minValue: 0,
+    maxValue: 18, // In months
+    step: 1,
+    type: "time"
+}
+
+const ConsolidationInterestRate = {
+    name: 'consolidation_interest_rate',
+    label: 'Consolidation Interest Rate',
+    minValue: 0,
+    maxValue: 15, // In Percentage
+    step: 0.1,
+    type: "percentage"
+}
+
 interface LoanCalculatorBasicData {
     name: string,
     label: string,
@@ -37,11 +56,6 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
 
     }
 
-    const handleSubmition = () => {
-        console.log("The formik values are", data?.formik?.values)
-
-
-    }
     return (
         <div className="flex w-[360px] flex-col gap-5 lg:w-[521px]">
             <div className="rounded-32 bg-white border-basic p-8 text-[38px] backdrop-blur-md shadow-[0_4px_4px_rgba(0,0,0,0.25)] flex flex-col gap-4 w-full">
@@ -56,10 +70,10 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
                                 <div className="text-sm leading-[16.94px] font-normal">
                                     Loan {index + 1}
                                 </div>
-                                <Image src={"/minus.svg"} width={16} height={16} alt="Delete Icon" onClick={() => data?.removeCalculator(index)} />
+                                <Image src={"/Trash.svg"} width={16} height={16} alt="Delete Icon" onClick={() => data?.removeCalculator(index)} />
                             </div>
                             <div className="">
-                                <Image src={"/filled.svg"} width={16} height={16} alt="Dropdown Icon" />
+                                <Image src={"/CaretDown.svg"} width={16} height={16} alt="Dropdown Icon" />
 
                             </div>
                         </div>
@@ -69,6 +83,9 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
                         })}
                     </div>
                 })}
+
+
+
 
 
                 <div className="flex justify-between items-center w-full h-12 p-2">
@@ -81,13 +98,15 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
                     </div>
                 </div>
 
+                <InputRange SingleInputData={LoanTermField} formik={data?.formik} />
+                <InputRange SingleInputData={ConsolidationInterestRate} formik={data?.formik} />
 
 
 
 
 
             </div>
-            <button className="w-full rounded-32 bg-light-gray p-4 text-[20px] font-bold text-yellow-orange" onClick={handleSubmition}>
+            <button className="w-full rounded-32 bg-light-gray p-4 text-[20px] font-bold text-yellow-orange" onClick={() => data?.formik?.handleSubmit()}>
                 Start Saving
             </button>
         </div>
