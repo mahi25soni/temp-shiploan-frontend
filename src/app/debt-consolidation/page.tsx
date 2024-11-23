@@ -15,15 +15,15 @@ import DebtLoanCalculator from '@/components/CalculaterComponent/DebtLoanCalcula
 
 const InputRangeData = [
   {
-    name: 'amount',
-    label: 'Amount',
+    name: 'monthly_payment',
+    label: 'Monthly Payment',
     minValue: 0,
     maxValue: 10000000, // In Rupees
     step: 1,
     type: "currency"
   },
   {
-    name: 'payment',
+    name: 'remaining_tenure',
     label: 'Payment Tenure',
     minValue: 0,
     maxValue: 60, // In months
@@ -32,7 +32,7 @@ const InputRangeData = [
   },
   {
     name: 'interest',
-    label: 'Interest',
+    label: 'Annual Interest Rate',
     minValue: 0,
     maxValue: 15, // In Percentage
     step: 0.1,
@@ -63,7 +63,7 @@ const DebtConsolidation = () => {
   })
   const formik = useFormik({
     initialValues: {
-      calculators: [{ amount: 0, payment: 0, interest: 0 }],
+      calculators: [{ monthly_payment: 0, remaining_tenure: 0, interest: 0 }],
     },
     onSubmit: (values) => {
       // setSuggestedLoanData({
