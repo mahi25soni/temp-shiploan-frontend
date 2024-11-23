@@ -56,10 +56,10 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
                                 <div className="text-sm leading-[16.94px] font-normal">
                                     Loan {index + 1}
                                 </div>
-                                <Image src={"/Trash.svg"} width={16} height={16} alt="Delete Icon" onClick={() => data?.removeCalculator(index)} />
+                                <Image src={"/minus.svg"} width={16} height={16} alt="Delete Icon" onClick={() => data?.removeCalculator(index)} />
                             </div>
                             <div className="">
-                                <Image src={"/CaretDown.svg"} width={16} height={16} alt="Dropdown Icon" />
+                                <Image src={"/filled.svg"} width={16} height={16} alt="Dropdown Icon" />
 
                             </div>
                         </div>

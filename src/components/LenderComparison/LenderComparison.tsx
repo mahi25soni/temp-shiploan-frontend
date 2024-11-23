@@ -40,7 +40,7 @@ const LenderComparison = ({ data }: props) => {
                 {data?.[0]?.interest_rate ? data?.[0]?.interest_rate + " %" : ""}
               </td>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
-                {data?.[1]?.interest_rate ? data?.[0]?.interest_rate + " %" : ""}
+                {data?.[1]?.interest_rate ? data?.[1]?.interest_rate + " %" : ""}
               </td>
             </tr>
             <tr>

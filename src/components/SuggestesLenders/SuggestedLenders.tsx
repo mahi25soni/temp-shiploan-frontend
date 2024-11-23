@@ -22,8 +22,6 @@ interface props {
 
 
 const SuggestedLenders = (data: props) => {
-    const [firstLenderCandidate, setFirstLenderCandidate] = useState<LenderInfo | null>(null)
-    const [secondLenderCandidate, setSecondLenderCandidate] = useState<LenderInfo | null>(null)
     const [selectedLenderIds, setSelectedLenderIds] = useState<string[]>([])
 
 
@@ -142,14 +140,14 @@ const SingleLenderInfo = ({
     return (
         <div className='p-6 bg-white  flex justify-between items-center gap-4 w-[353px] shadow-[0_2px_8px_rgba(0,0,0,0.25)] lg:w-full rounded-2xl lg:p-8 h-[152px] lg:h-full
     '>
-            <div className='flex flex-col gap-4 lg:w-full'>
-                <div className='flex items-center  gap-1 lg:h-[58px] lg:justify-between lg:w-full'>
+            <div className='flex flex-col gap-4 w-full'>
+                <div className='flex items-center  gap-1 lg:h-[58px] justify-between min-w-full'>
                     <div className='flex flex-row gap-3'>
                         <div className='relative lg:flex justify-center items-center hidden'>
 
                             <Image src={lender?.logo} alt='Bank logo' height={30} width={30} />
                         </div>
-                        <div className='font-bold text-2xl leading-[29.05px] lg:text-[30px] lg:leading-[58px] text-center '>
+                        <div className='font-bold text-xl leading-[24px] lg:text-[30px] lg:leading-[58px] text-center '>
                             {lender?.bank_name}
                         </div>
                     </div>
@@ -165,13 +163,15 @@ const SingleLenderInfo = ({
                             <div>Visit Lender Website</div>
                         </div>
                     </div>
-                    <div onClick={() => handleAddToCompare(lender)} className={`lg:hidden h-6 w-6 relative`}>
+                    <div className='flex gap-1 items-center lg:hidden'>
 
-                        <Image src='/PlusCircle.svg' fill alt="Add Button" className={`rounded-full ${isSelected ? "text-white bg-black" : "text-black "}`} />
-                    </div>
-                    <div className='lg:hidden  h-6 w-6 relative'>
+                        <div onClick={() => handleAddToCompare(lender)} className={`lg:hidden h-6 w-6 relative`}>
+                            {isSelected ? <Image src='/minusFilled.svg' fill alt="Minus button" className={`rounded-full`} /> : <Image src='/PlusCircle.svg' fill alt="Add Button" className={`rounded-full`} />}
+                        </div>
+                        <div className='lg:hidden  h-6 w-6 relative'>
 
-                        <Image src='/connect.svg' fill alt="Connect Button" className={`rounded-full`} />
+                            <Image src='/connect.svg' fill alt="Connect Button" className={`rounded-full`} />
+                        </div>
                     </div>
                 </div>
                 <div className='lg:hidden w-full '>
@@ -225,7 +225,7 @@ const SingleLenderInfo = ({
                 <BrownLine height={true} />
             </div>
 
-            <div className='flex flex-col gap-7 lg:hidden'>
+            <div className='flex min-w-[80px] flex-col gap-7 lg:hidden lg:w-full'>
                 <div className='flex flex-col gap-1 '>
                     <div className='text-xs leading-[14.52px] text-[#000000]'>
                         Current EMI
@@ -241,7 +241,7 @@ const SingleLenderInfo = ({
                         New EMI
                     </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {"₹ " + lender?.current_emi}
+                        {"₹ " + lender?.new_emi}
 
                     </div>
                 </div>
