@@ -13,24 +13,24 @@ import axios from "../../../../axios"
 
 const InputRangeData = [
   {
-    name: 'outstanding_amount',
-    label: 'Outstanding Amount',
+    name: 'current_credit',
+    label: 'Current Credit',
     minValue: 0,
     maxValue: 10000000, // In Rupees
     step: 1,
     type: "currency"
   },
   {
-    name: 'tenure',
-    label: 'Payment Tenure',
+    name: 'monthly_payment',
+    label: 'Monthly Payment',
     minValue: 0,
-    maxValue: 60, // In months
+    maxValue: 100000, // In months
     step: 1,
-    type: "time"
+    type: "currency"
   },
   {
-    name: 'current_roi',
-    label: 'Current ROI',
+    name: 'interest_rate',
+    label: 'Annual Interest Rate',
     minValue: 0,
     maxValue: 15, // In Percentage
     step: 0.1,
@@ -60,16 +60,16 @@ const CreditCardLoan = () => {
   })
   const formik = useFormik({
     initialValues: {
-      outstanding_amount: 0,
-      tenure: 0,
-      current_roi: 0,
+      current_credit: 0,
+      monthly_payment: 0,
+      interest_rate: 0,
 
     },
     onSubmit: (values) => {
       setSuggestedLoanData({
-        amount: values?.outstanding_amount,
-        tenure: values?.tenure,
-        roi: values?.current_roi
+        amount: values?.current_credit,
+        tenure: values?.monthly_payment,
+        roi: values?.interest_rate
       })
       setSuggestLoan(true)
     },
@@ -78,10 +78,10 @@ const CreditCardLoan = () => {
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>([])
 
   const handleSuggestedLenders = async () => {
-    const { data } = await axios.post("/calculate/credit-card-loan", { ...suggestedLoanData, type: 'Credit Card Loan' })
+    const { data } = await axios.post("/calculate/credit-card-loan", { ...formik.values })
 
-    setLenderArray(data?.data)
-    setSuggestLenders(true)
+    // setLenderArray(data?.data)
+    // setSuggestLenders(true)
 
   }
   return (
