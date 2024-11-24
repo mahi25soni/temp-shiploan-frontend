@@ -98,7 +98,7 @@ const CreditCardLoan = () => {
         values: [
           { id: 1, label_name: 'Current card cost', value: item?.current_card_cost, type: 'currency' },
           { id: 1, label_name: 'New card cost', value: item?.new_card_cost, type: 'currency' },
-          { id: 1, label_name: 'saving', value: item?.saving, type: 'currency' },
+          { id: 1, label_name: 'Saving', value: item?.saving, type: 'currency' },
 
         ]
       }

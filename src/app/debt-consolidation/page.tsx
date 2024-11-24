@@ -15,6 +15,14 @@ import DebtLoanCalculator from '@/components/CalculaterComponent/DebtLoanCalcula
 
 const InputRangeData = [
   {
+    name: 'current_balance',
+    label: 'Current Balance',
+    minValue: 0,
+    maxValue: 10000000, // In Rupees
+    step: 1,
+    type: "currency"
+  },
+  {
     name: 'monthly_payment',
     label: 'Monthly Payment',
     minValue: 0,
@@ -24,7 +32,7 @@ const InputRangeData = [
   },
   {
     name: 'remaining_tenure',
-    label: 'Payment Tenure',
+    label: 'Remaining Payment Tenure',
     minValue: 0,
     maxValue: 60, // In months
     step: 1,
@@ -74,8 +82,7 @@ const DebtConsolidation = () => {
   const formik = useFormik({
     initialValues: {
       loan_term: 0,
-      consolidation_interest_rate: 0,
-      calculators: [{ monthly_payment: 0, remaining_tenure: 0, interest: 0 }],
+      calculators: [{ monthly_payment: 0, remaining_tenure: 0, interest: 0, current_balance: 0 }],
     },
     onSubmit: (values) => {
       setSuggestedLoanData({
@@ -93,10 +100,24 @@ const DebtConsolidation = () => {
   const handleSuggestedLenders = async () => {
     const { data } = await axios.post("/calculate/debt-consolidation", { ...formik?.values })
 
-    console.log("some data is ", data)
 
-    // setLenderArray(data?.data)
-    // setSuggestLenders(true)
+    const StructuredData = data?.data.map((item: any) => {
+      return {
+        id: item?.id,
+        bank_name: item?.bank_name,
+        lender_link: "temp link",
+        logo: item?.logo,
+        values: [
+          { id: 1, label_name: 'Current Interest', value: item?.current_interest, type: 'currency' },
+          { id: 1, label_name: 'New Interest', value: item?.new_interest, type: 'currency' },
+          { id: 1, label_name: 'Saving', value: item?.saving, type: 'currency' },
+
+        ]
+      }
+    })
+
+    setLenderArray(StructuredData)
+    setSuggestLenders(true)
 
   }
 

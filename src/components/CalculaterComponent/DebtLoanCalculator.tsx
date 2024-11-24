@@ -7,21 +7,13 @@ import Image from "next/image";
 
 const LoanTermField = {
     name: 'loan_term',
-    label: 'Loan Repainment Tern',
+    label: 'Loan Repayment Term',
     minValue: 0,
     maxValue: 18, // In months
     step: 1,
     type: "time"
 }
 
-const ConsolidationInterestRate = {
-    name: 'consolidation_interest_rate',
-    label: 'Consolidation Interest Rate',
-    minValue: 0,
-    maxValue: 15, // In Percentage
-    step: 0.1,
-    type: "percentage"
-}
 
 interface LoanCalculatorBasicData {
     name: string,
@@ -99,7 +91,6 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
                 </div>
 
                 <InputRange SingleInputData={LoanTermField} formik={data?.formik} />
-                <InputRange SingleInputData={ConsolidationInterestRate} formik={data?.formik} />
 
 
 
