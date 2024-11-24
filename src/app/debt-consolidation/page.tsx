@@ -92,6 +92,8 @@ const DebtConsolidation = () => {
       })
 
       setSuggestLoan(true)
+      setSuggestLenders(false)
+      setLenderComparison(false)
     },
   })
   const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>([])

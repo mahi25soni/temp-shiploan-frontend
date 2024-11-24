@@ -76,6 +76,9 @@ const HomeLoan = () => {
         roi: values?.current_roi
       })
       setSuggestLoan(true)
+      setSuggestLenders(false)
+      setLenderComparison(false)
+
     },
 
   })
