@@ -46,7 +46,7 @@ const HomePage = (props: Props) => {
             <Link key={index} href={item.link} passHref>
               <button
                 onClick={() => setTempSelectedTab(item?.tab)}
-                className="  rounded-32 bg-light-gray py-2 px-4 text-[16px] font-bold text-yellow-orange"
+                className="w-[200px]  rounded-32 bg-light-gray py-2  text-[16px] font-bold text-yellow-orange"
               >
                 {item.tab}
               </button>
