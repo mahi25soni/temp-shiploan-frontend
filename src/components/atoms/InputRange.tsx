@@ -38,7 +38,7 @@ const InputRange: React.FC<InputRangeProps> = (data: InputRangeProps) => {
   return (
     <div className="w-full flex flex-col gap-4">
       <div className="flex justify-between text-base leading-[17px]">
-        <label htmlFor={data.SingleInputData.name} className="text-base" >
+        <label htmlFor={data.SingleInputData.name} className="text-[18px]" >
           {data.SingleInputData.label}
         </label>
         <p

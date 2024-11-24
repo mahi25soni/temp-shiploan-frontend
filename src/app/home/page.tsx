@@ -41,12 +41,12 @@ const HomePage = (props: Props) => {
         description="Lorem ipsum dolor sit amet consectetur. Diam sed mattis facilisis eget tellus dui augue sagittis ultricies. Scelerisque elit duis in tortor. Volutpat elit neque in sem nulla quam imperdiet. Mi nisl sem amet odio."
         altText="kuchh bhi rakhlo"
       >
-        <div className="flex flex-col gap-4 items-center">
+        <div className="flex flex-col gap-4 items-start">
           {LoanOptions.map((item, index) => (
             <Link key={index} href={item.link} passHref>
               <button
                 onClick={() => setTempSelectedTab(item?.tab)}
-                className="w-[270px] rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange"
+                className="  rounded-32 bg-light-gray py-2 px-4 text-[16px] font-bold text-yellow-orange"
               >
                 {item.tab}
               </button>
