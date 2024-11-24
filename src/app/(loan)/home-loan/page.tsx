@@ -91,13 +91,14 @@ const HomeLoan = () => {
       return {
         id: item?.id,
         bank_name: item?.bank_name,
-        first_label: 'Interst Rate',
-        second_label: 'Current EMI',
-        third_label: 'New EMI',
-        first_value: item?.interest_rate,
-        second_value: item?.current_emi,
-        third_value: item?.new_emi,
-        logo: item?.logo
+        lender_link: "temp link",
+        logo: item?.logo,
+        values: [
+          { id: 1, label_name: 'Interest Rate', value: item?.interest_rate, type: 'percentage' },
+          { id: 1, label_name: 'Current EMI', value: item?.current_emi, type: 'currency' },
+          { id: 1, label_name: 'New EMI', value: item?.new_emi, type: 'currency' },
+
+        ]
       }
     })
 
