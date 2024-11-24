@@ -1,33 +1,53 @@
-import MainHeading from '@/components/atoms/MainHeading'
+"use client"
+import { BlogSampleData } from '@/testdata/blog-data';
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link';
+import React, { useState } from 'react'
 
-type Props = {}
 
-const BlogBase = (props: Props) => {
+interface BlogItemInterface {
+    blog_title: string;
+    blog_content: string;
+    author: string;
+    date: string;
+}
+
+const data: BlogItemInterface[] = BlogSampleData;
+
+const BlogBase = () => {
+
+    const [blogList, setBlogList] = useState<BlogItemInterface[]>(data);
     return (
-        <div className='flex flex-col px-8 lg:px-[390px] w-full items-center gap-8 bg-white'>
-            <div className="relative h-[400px] w-[303px] lg:h-[400px] lg:w-[526px]">
-                <Image
-                    src={"/money and pie chart.svg"}
-                    layout="fill"
-                    objectFit="fill"
-                    alt={"The Rise of AI in Everyday Life"}
-                />
-            </div>
-            <div className='lg:min-w-[800px] flex flex-col w-full items-center'>
+        <div className='flex flex-col mt-[125px] px-8  items-center gap-8 bg-white '>
+            {blogList?.map((blog, index) => {
+                const slug = blog.blog_title.toLowerCase().replace(/ /g, '-');
+                return <Link href={`/blog/${slug}`} key={index}>
+                    <div className='h-max py-0 lg:py-5 w-full rounded-32 border-basic flex flex-col lg:flex-row gap-5 items-center lg:items-start cursor-pointer lg:w-[800px] ' key={index}>
+                        <div className='min-h-[200px] min-w-[220px] relative'>
+                            <Image
+                                src="/blogbg1.svg"
+                                alt="Blog Item Background"
+                                fill
+                                className=""
+                            ></Image>
+                        </div>
+                        <div className='flex flex-col gap-4 text-center lg:text-left'>
+                            <div className="bottom-6 text-[30px] font-bold lg:leading-[45px] leading-[34px]  line-clamp-3">
+                                {blog?.blog_title}
+                            </div>
 
-                <MainHeading align='left' heading={"The Rise of AI in Everyday Life"} />
+                            <div className="line-clamp-3 text-[18px] font-medium leading-[22px]">
+                                {blog?.blog_content}
+                            </div>
+                            <div className="text-sm font-normal leading-4">
+                                {blog?.author} {" . "} {blog?.date}
+                            </div>
 
-                <div className='h-[41px]  border-y border-[#333333] border-opacity-15 w-full flex items-center'>
-                    <div className="text-sm font-normal leading-4 text-black opacity-50">
-                        {"Jane Doe"} {" . "} {"2024-02-14"}
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <p>Artificial intelligence is no longer a thing of the future. From voice assistants to personalized ads, AI has integrated seamlessly into our daily routines. This article explores how AI is shaping industries and our personal lives.</p>
-                </div>
-            </div>
+                </Link>
+            })}
+
         </div>
     )
 }
