@@ -25,7 +25,7 @@ const InputRangeData = [
     name: 'tenure',
     label: 'Payment Tenure',
     minValue: 0,
-    maxValue: 60, // In months
+    maxValue: 120, // In months
     step: 1,
     type: "time"
   },

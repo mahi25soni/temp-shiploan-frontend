@@ -24,7 +24,7 @@ const InputRangeData = [
     name: 'monthly_payment',
     label: 'Monthly Payment',
     minValue: 0,
-    maxValue: 100000, // In months
+    maxValue: 100000, // In Rupees
     step: 1,
     type: "currency"
   },
