@@ -89,18 +89,18 @@ const CreditCardLoan = () => {
   const handleSuggestedLenders = async () => {
     const { data } = await axios.post("/calculate/credit-card-loan", { ...formik.values })
 
-
     const StructuredData = data?.data.map((item: any) => {
       return {
         id: item?.id,
         bank_name: item?.bank_name,
-        first_label: 'Old total cost',
-        second_label: 'New total cost',
-        third_label: 'Saving',
-        first_value: item?.current_card_cost,
-        second_value: item?.new_card_cost,
-        third_value: item?.saving,
-        logo: item?.logo
+        lender_link: "temp link",
+        logo: item?.logo,
+        values: [
+          { id: 1, label_name: 'Current card cost', value: item?.current_card_cost, type: 'currency' },
+          { id: 1, label_name: 'New card cost', value: item?.new_card_cost, type: 'currency' },
+          { id: 1, label_name: 'saving', value: item?.saving, type: 'currency' },
+
+        ]
       }
     })
     setLenderArray(StructuredData)
