@@ -44,10 +44,20 @@ const InputRangeData = [
 interface LenderInfo {
   id: string,
   bank_name: string,
-  interest_rate: number,
-  current_emi: number,
-  new_emi: number,
-  logo: string
+  logo: string,
+  lender_link: string,
+  values: {
+    id: number,
+    label_name: string,
+    value: number
+    type: string
+  }[]
+}
+
+const something = {
+  "first_label": "Total Saving",
+  "second_label": "Current Total Interest",
+  "third_label": "Consolidated Total Interest",
 }
 
 const DebtConsolidation = () => {
@@ -121,7 +131,13 @@ const DebtConsolidation = () => {
 
       </PageWrapper>
       {suggestLoan && <SuggestedLoan {...suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
-      {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
+
+
+
+      {suggestLenders && <SuggestedLenders lenderArray={lenderArray}
+        setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
+
+
       {lenderComparison && lenderComparisonArray?.length > 0 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
 
 

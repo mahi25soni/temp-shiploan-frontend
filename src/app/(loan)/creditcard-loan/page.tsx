@@ -39,13 +39,22 @@ const InputRangeData = [
 
 ]
 
+const values = [
+  { id: 1, label_name: 'Old total cost', value: 1000, type: 'currency' },
+  { id: 2, label_name: 'New total cost', value: 2000, type: 'currency' },
+  { id: 3, label_name: 'Saving', value: 1000, type: 'currency' }
+]
 interface LenderInfo {
   id: string,
   bank_name: string,
-  interest_rate: number,
-  current_emi: number,
-  new_emi: number,
-  logo: string
+  logo: string,
+  lender_link: string,
+  values: {
+    id: number,
+    label_name: string,
+    value: number
+    type: string
+  }[]
 }
 
 const CreditCardLoan = () => {
@@ -74,14 +83,28 @@ const CreditCardLoan = () => {
       setSuggestLoan(true)
     },
   })
-  const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>(LenderSampleData)
+  const [lenderComparisonArray, setLenderComparisonArray] = useState<LenderInfo[]>([])
   const [lenderArray, setLenderArray] = useState<LenderInfo[]>([])
 
   const handleSuggestedLenders = async () => {
     const { data } = await axios.post("/calculate/credit-card-loan", { ...formik.values })
 
-    // setLenderArray(data?.data)
-    // setSuggestLenders(true)
+
+    const StructuredData = data?.data.map((item: any) => {
+      return {
+        id: item?.id,
+        bank_name: item?.bank_name,
+        first_label: 'Old total cost',
+        second_label: 'New total cost',
+        third_label: 'Saving',
+        first_value: item?.current_card_cost,
+        second_value: item?.new_card_cost,
+        third_value: item?.saving,
+        logo: item?.logo
+      }
+    })
+    setLenderArray(StructuredData)
+    setSuggestLenders(true)
 
   }
   return (

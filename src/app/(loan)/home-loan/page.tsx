@@ -43,10 +43,14 @@ const InputRangeData = [
 interface LenderInfo {
   id: string,
   bank_name: string,
-  interest_rate: number,
-  current_emi: number,
-  new_emi: number,
-  logo: string
+  logo: string,
+  lender_link: string,
+  values: {
+    id: number,
+    label_name: string,
+    value: number
+    type: string
+  }[]
 }
 
 const HomeLoan = () => {
@@ -82,7 +86,24 @@ const HomeLoan = () => {
   const handleSuggestedLenders = async () => {
     const { data } = await axios.post("/calculate/home-loan", { ...suggestedLoanData, type: 'Home Loan' })
 
-    setLenderArray(data?.data)
+
+    const StructedData = data?.data.map((item: any) => {
+      return {
+        id: item?.id,
+        bank_name: item?.bank_name,
+        first_label: 'Interst Rate',
+        second_label: 'Current EMI',
+        third_label: 'New EMI',
+        first_value: item?.interest_rate,
+        second_value: item?.current_emi,
+        third_value: item?.new_emi,
+        logo: item?.logo
+      }
+    })
+
+    console.log("some data is ", StructedData)
+
+    setLenderArray(StructedData)
     setSuggestLenders(true)
 
   }

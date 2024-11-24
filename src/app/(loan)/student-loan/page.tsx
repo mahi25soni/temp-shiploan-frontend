@@ -44,10 +44,14 @@ const InputRangeData = [
 interface LenderInfo {
   id: string,
   bank_name: string,
-  interest_rate: number,
-  current_emi: number,
-  new_emi: number,
-  logo: string
+  logo: string,
+  lender_link: string,
+  values: {
+    id: number,
+    label_name: string,
+    value: number
+    type: string
+  }[]
 }
 
 const StudentLoan = () => {

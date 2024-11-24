@@ -6,11 +6,14 @@ import BrownLine from '../atoms/BrownLine';
 interface LenderInfo {
     id: string,
     bank_name: string,
-    interest_rate: number,
-    current_emi: number,
-    new_emi: number,
-    logo: string
-
+    logo: string,
+    lender_link: string,
+    values: {
+        id: number,
+        label_name: string,
+        value: number
+        type: string
+    }[]
 }
 
 interface props {
@@ -23,11 +26,6 @@ interface props {
 
 const SuggestedLenders = (data: props) => {
     const [selectedLenderIds, setSelectedLenderIds] = useState<string[]>([])
-
-
-    console.log("The data in suggested lenders ", data)
-
-
 
     const handleAddToCompare = (lender: LenderInfo) => {
         const lenderId = lender.id;
@@ -181,10 +179,10 @@ const SingleLenderInfo = ({
                 <div className='flex gap-4 items-center justify-start lg:justify-between w-full'>
                     <div className='flex flex-col gap-1 '>
                         <div className='text-xs leading-[14.52px] lg:text-[18px] lg:leading-[29.05px] '>
-                            Interest Rate
+                            {lender?.values?.[0]?.label_name}
                         </div>
                         <div className='text-sm font-bold leading-[16.94px]  lg:text-[18px] lg:leading-[38.73px]'>
-                            {lender?.interest_rate} %
+                            {lender?.values?.[0]?.value}
                         </div>
                     </div>
                     {/* <div className='flex flex-col gap-1 '>
@@ -199,19 +197,19 @@ const SingleLenderInfo = ({
 
                     <div className='hidden lg:flex flex-col gap-1 '>
                         <div className='text-xs leading-[14.52px] text-[#000000] lg:text-[18px] lg:leading-[29.05px] '>
-                            Current EMI
+                            {lender?.values?.[1]?.label_name}
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
-                            {"₹ " + lender?.current_emi}
+                            {lender?.values?.[1]?.value}
 
                         </div>
                     </div>
                     <div className='hidden lg:flex flex-col gap-1 '>
                         <div className='text-xs leading-[14.52px] text-[#000000] lg:text-[18px] lg:leading-[29.05px] '>
-                            New EMI
+                            {lender?.values?.[2]?.label_name}
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
-                            {"₹ " + lender?.current_emi}
+                            {lender?.values?.[2]?.value}
 
                         </div>
                     </div>
@@ -228,20 +226,19 @@ const SingleLenderInfo = ({
             <div className='flex min-w-[80px] flex-col gap-7 lg:hidden lg:w-full'>
                 <div className='flex flex-col gap-1 '>
                     <div className='text-xs leading-[14.52px] text-[#000000]'>
-                        Current EMI
+                        {lender?.values?.[1]?.label_name}
                     </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {"₹ " + lender?.current_emi}
+                        {lender?.values?.[1]?.value}
 
                     </div>
                 </div>
                 {/* <div ></div> */}
                 <div className='flex flex-col gap-1 '>
                     <div className='text-xs leading-[14.52px] text-[#000000]'>
-                        New EMI
-                    </div>
+                        {lender?.values?.[2]?.label_name}                    </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {"₹ " + lender?.new_emi}
+                        {lender?.values?.[2]?.value}
 
                     </div>
                 </div>
