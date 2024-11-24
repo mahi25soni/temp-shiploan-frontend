@@ -1,5 +1,5 @@
+import formatNumber from '@/utils/numberFormatter';
 import React from 'react';
-
 
 interface LenderInfo {
   id: string,
@@ -14,11 +14,13 @@ interface LenderInfo {
   }[]
 }
 
+
 interface props {
   data?: LenderInfo[]
 }
 
 const LenderComparison = ({ data }: props) => {
+
   return (
     <div className="lg:px-[134px] flex justify-center  my-5 flex-col gap-6 items-center">
       <div className='flex items-center justify-between w-[353px] lg:w-full'>
@@ -41,10 +43,10 @@ const LenderComparison = ({ data }: props) => {
             </tr>
             <tr>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
-                {data?.[0].values?.[0].value}
+                {formatNumber(data?.[0].values?.[0].value, data?.[0].values?.[0].type)}
               </td>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
-                {data?.[1]?.values?.[0].value ? data?.[1]?.values?.[0].value : ""}
+                {data?.[1]?.values?.[0].value ? formatNumber(data?.[1]?.values?.[0].value, data?.[1].values?.[0].type) : ""}
               </td>
             </tr>
             <tr>
@@ -52,10 +54,11 @@ const LenderComparison = ({ data }: props) => {
             </tr>
             <tr>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
-                {data?.[0].values?.[1].value}
+                {formatNumber(data?.[0].values?.[1].value, data?.[0].values?.[1].type)}
               </td>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
-                {data?.[1]?.values?.[1].value ? data?.[1]?.values?.[1].value : ""}
+                {data?.[1]?.values?.[1].value ? formatNumber(data?.[1]?.values?.[1].value, data?.[1]?.values?.[1].type) : ""}
+
 
               </td>
             </tr>
@@ -64,10 +67,11 @@ const LenderComparison = ({ data }: props) => {
             </tr>
             <tr>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
-                {data?.[0].values?.[2].value}
+
+                {formatNumber(data?.[0].values?.[2].value, data?.[0].values?.[2].type)}
               </td>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">
-                {data?.[1]?.values?.[2].value ? data?.[1]?.values?.[2].value : ""}
+                {data?.[1]?.values?.[2].value ? formatNumber(data?.[1]?.values?.[2].value, data?.[1]?.values?.[2].type) : ""}
 
               </td>
             </tr>

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react'
 import BrownLine from '../atoms/BrownLine';
+import formatNumber from '@/utils/numberFormatter';
 
 
 interface LenderInfo {
@@ -182,7 +183,7 @@ const SingleLenderInfo = ({
                             {lender?.values?.[0]?.label_name}
                         </div>
                         <div className='text-sm font-bold leading-[16.94px]  lg:text-[18px] lg:leading-[38.73px]'>
-                            {lender?.values?.[0]?.value}
+                            {formatNumber(lender?.values?.[0]?.value, lender?.values?.[0]?.type)}
                         </div>
                     </div>
                     {/* <div className='flex flex-col gap-1 '>
@@ -200,7 +201,7 @@ const SingleLenderInfo = ({
                             {lender?.values?.[1]?.label_name}
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
-                            {lender?.values?.[1]?.value}
+                            {formatNumber(lender?.values?.[1]?.value, lender?.values?.[1]?.type)}
 
                         </div>
                     </div>
@@ -209,7 +210,7 @@ const SingleLenderInfo = ({
                             {lender?.values?.[2]?.label_name}
                         </div>
                         <div className='text-sm font-bold leading-[16.94px] lg:text-[18px] lg:leading-[38.73px]'>
-                            {lender?.values?.[2]?.value}
+                            {formatNumber(lender?.values?.[2]?.value, lender?.values?.[2]?.type)}
 
                         </div>
                     </div>
@@ -229,7 +230,7 @@ const SingleLenderInfo = ({
                         {lender?.values?.[1]?.label_name}
                     </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {lender?.values?.[1]?.value}
+                        {formatNumber(lender?.values?.[1]?.value, lender?.values?.[1]?.type)}
 
                     </div>
                 </div>
@@ -238,7 +239,8 @@ const SingleLenderInfo = ({
                     <div className='text-xs leading-[14.52px] text-[#000000]'>
                         {lender?.values?.[2]?.label_name}                    </div>
                     <div className='text-sm font-bold leading-[16.94px]'>
-                        {lender?.values?.[2]?.value}
+                        {formatNumber(lender?.values?.[2]?.value, lender?.values?.[2]?.type)}
+
 
                     </div>
                 </div>
