@@ -11,12 +11,12 @@ interface BlogPost {
     date: string;
 }
 
-interface Props {
-    params: { slug: string };
-}
-
-const Blog = async ({ params }: Props) => {
-    const { slug } = params;
+export default async function Blog({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
 
     const postData: BlogPost | undefined = BlogSlugSampleData[slug];
 
@@ -63,4 +63,4 @@ const Blog = async ({ params }: Props) => {
     );
 };
 
-export default Blog;
+// export default Blog;
