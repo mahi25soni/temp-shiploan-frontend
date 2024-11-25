@@ -39,14 +39,28 @@ interface loanFieldInterface {
     interest: number
 }
 
+interface LoanCalculatorProps {
+
+}
+
 const DebtLoanCalculator = (data: LoanCalculatorProps) => {
 
-    const [dropdownLoan, setDropdownloan] = useState()
+    const [dropdownLoan, setDropdownLoan] = useState<{
+        [key: number]: Boolean
+    }>({});
 
 
-    const handleDropdown = () => {
+    const handleDropdown = (index: any) => {
+        setDropdownLoan((prevState) => {
+            return {
+                ...prevState,
+                [index]: !prevState[index]
+            }
+        })
+    };
 
-    }
+
+
 
     return (
         <div className="flex w-[360px] flex-col gap-5 lg:w-[521px]">
@@ -64,13 +78,17 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
                                 </div>
                                 <Image src={"/Trash.svg"} width={16} height={16} alt="Delete Icon" onClick={() => data?.removeCalculator(index)} />
                             </div>
-                            <div className="">
-                                <Image src={"/CaretDown.svg"} width={16} height={16} alt="Dropdown Icon" />
-
+                            <div onClick={() => handleDropdown(index)} className="cursor-pointer">
+                                <div
+                                    className={`transition-transform duration-300 ${!dropdownLoan[index] ? "rotate-180" : ""
+                                        }`}
+                                >
+                                    <Image src="/CaretDown.svg" width={16} height={16} alt="Dropdown Icon" />
+                                </div>
                             </div>
                         </div>
 
-                        {data?.InputDataList?.length > 0 && data?.InputDataList?.map((item, inputIndex) => {
+                        {!dropdownLoan[index] && data?.InputDataList?.length > 0 && data?.InputDataList?.map((item, inputIndex) => {
                             return <InputRange key={inputIndex} SingleInputData={item} formik={data?.formik} loanIndex={index} />
                         })}
                     </div>
