@@ -54,15 +54,18 @@ interface LenderInfo {
   }[]
 }
 
+interface SuggestLoanInterface {
+  id: number,
+  label_name: string,
+  value: number,
+  type: string
+}
+
 const HomeLoan = () => {
   const [suggestLoan, setSuggestLoan] = useState(false)
   const [suggestLenders, setSuggestLenders] = useState(false)
   const [lenderComparison, setLenderComparison] = useState(false)
-  const [suggestedLoanData, setSuggestedLoanData] = useState({
-    amount: 0,
-    tenure: 0,
-    roi: 0
-  })
+  const [suggestedLoanData, setSuggestedLoanData] = useState<SuggestLoanInterface[]>([])
   const formik = useFormik({
     initialValues: {
       outstanding_amount: 0,
@@ -71,11 +74,16 @@ const HomeLoan = () => {
 
     },
     onSubmit: (values) => {
-      setSuggestedLoanData({
+      const some = {
         amount: values?.outstanding_amount,
         tenure: values?.tenure,
         roi: values?.current_roi
-      })
+      }
+      setSuggestedLoanData([
+        { id: 1, label_name: 'Outstanding Amount', value: values?.outstanding_amount, type: 'currency' },
+        { id: 2, label_name: 'Payment Tenure', value: values?.tenure, type: 'time' },
+        { id: 3, label_name: 'Rate of Interest', value: values?.current_roi, type: 'percentage' },
+      ])
       setSuggestLoan(true)
       setSuggestLenders(false)
       setLenderComparison(false)
@@ -120,7 +128,7 @@ const HomeLoan = () => {
 
 
       </PageWrapper>
-      {suggestLoan && <SuggestedLoan {...suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
+      {suggestLoan && <SuggestedLoan loanData={suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
       {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
       {lenderComparison && lenderComparisonArray?.length > 0 && <LenderComparison data={lenderComparisonArray}></LenderComparison>}
 

@@ -9,11 +9,15 @@ const formatNumber = (value: any, type?: string) => {
     });
   }
 
+  let formated = numbro(value).format({ thousandSeparated: true, mantissa: 1 });
   if (type === "percentage") {
-    return `${numbro(value).format({ thousandSeparated: true, mantissa: 0 })}%`;
+    return `${formated} %`;
+  }
+  if (type === "time") {
+    return `${formated} mo`;
   }
 
-  return numbro(value).format({ thousandSeparated: true, mantissa: 0 });
+  return formated;
 };
 
 export default formatNumber;

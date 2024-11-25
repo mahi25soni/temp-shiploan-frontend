@@ -40,11 +40,12 @@ const InputRangeData = [
 
 ]
 
-const values = [
-  { id: 1, label_name: 'Old total cost', value: 1000, type: 'currency' },
-  { id: 2, label_name: 'New total cost', value: 2000, type: 'currency' },
-  { id: 3, label_name: 'Saving', value: 1000, type: 'currency' }
-]
+interface SuggestLoanInterface {
+  id: number,
+  label_name: string,
+  value: number,
+  type: string
+}
 interface LenderInfo {
   id: string,
   bank_name: string,
@@ -63,11 +64,7 @@ const CreditCardLoan = () => {
   const [suggestLenders, setSuggestLenders] = useState(false)
   const [lenderComparison, setLenderComparison] = useState(false)
 
-  const [suggestedLoanData, setSuggestedLoanData] = useState({
-    amount: 0,
-    tenure: 0,
-    roi: 0
-  })
+  const [suggestedLoanData, setSuggestedLoanData] = useState<SuggestLoanInterface[]>([])
   const formik = useFormik({
     initialValues: {
       current_credit: 0,
@@ -76,11 +73,11 @@ const CreditCardLoan = () => {
 
     },
     onSubmit: (values) => {
-      setSuggestedLoanData({
-        amount: values?.current_credit,
-        tenure: values?.monthly_payment,
-        roi: values?.interest_rate
-      })
+      setSuggestedLoanData([
+        { id: 1, label_name: 'Current Credit', value: values?.current_credit, type: 'currency' },
+        { id: 2, label_name: 'Monthly Payment', value: values?.monthly_payment, type: 'currency' },
+        { id: 3, label_name: 'Annual Interest Rate', value: values?.interest_rate, type: 'percentage' },
+      ])
       setSuggestLoan(true)
       setSuggestLenders(false)
       setLenderComparison(false)
@@ -119,7 +116,7 @@ const CreditCardLoan = () => {
 
       </PageWrapper>
       {suggestLoan &&
-        <SuggestedLoan {...suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
+        <SuggestedLoan loanData={suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
 
       {suggestLenders && <SuggestedLenders lenderArray={lenderArray} setLenderComparisonArray={setLenderComparisonArray} setLenderComparison={setLenderComparison} lenderComparisonArray={lenderComparisonArray} />}
 

@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import MainHeading from '../atoms/MainHeading';
 import Image from 'next/image';
+import formatNumber from '@/utils/numberFormatter';
 
+interface SuggestLoanInterface {
+    id: number,
+    label_name: string,
+    value: number,
+    type: string
+}
 interface SuggestedLoanProps {
-    amount: number;
-    tenure: number;
-    roi: number;
+    loanData: SuggestLoanInterface[],
     handleSuggestedLenders: (value: void) => void;
 }
 
@@ -25,30 +30,18 @@ const SuggestedLoan = (data: SuggestedLoanProps) => {
                 <div className='border border-[#33333326] w-full'></div>
 
                 <div className='flex flex-col gap-4 w-full'>
-                    <div className='flex justify-between items-center'>
-                        <div className='text-sm leading-[16.94px] text-[#48454C]'>
-                            Amount
+
+                    {data?.loanData?.map((loanItem, index) => {
+                        return <div className='flex justify-between items-center' key={index}>
+                            <div className='text-sm leading-[16.94px] text-[#48454C]'>
+                                {loanItem?.label_name}
+                            </div>
+                            <div className='text-sm font-medium text-[#333333]'>
+                                {formatNumber(loanItem?.value, loanItem?.type)}
+                            </div>
                         </div>
-                        <div className='text-sm font-medium text-[#333333]'>
-                            {"Rs "}{data?.amount}
-                        </div>
-                    </div>
-                    <div className='flex justify-between items-center'>
-                        <div className='text-sm leading-[16.94px] text-[#48454C]'>
-                            Tenure
-                        </div>
-                        <div className='text-sm font-medium text-[#333333]'>
-                            {data?.tenure}{' months'}
-                        </div>
-                    </div>
-                    <div className='flex justify-between items-center'>
-                        <div className='text-sm leading-[16.94px] text-[#48454C]'>
-                            Rate of interest
-                        </div>
-                        <div className='text-sm font-medium text-[#333333]'>
-                            {data?.roi}{" %"}
-                        </div>
-                    </div>
+                    })}
+
                 </div>
 
                 <div className='border border-[#33333326] w-full'></div>
