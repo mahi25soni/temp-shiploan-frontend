@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import axios from "../../../axios"
 
 type Props = {};
 
@@ -24,6 +25,7 @@ const HomePage = (props: Props) => {
 
   const [tempSelectedTab, setTempSelectedTab] = useState<string>("Home Loan");
   const [selectedTabLink, setSelectedTabLink] = useState<string>("/home-loan");
+  const [customerEmail, setCustomerEmail] = useState<string>("");
 
   useEffect(() => {
     const theLink = LoanOptions.find((item) => item.tab === tempSelectedTab)?.link || "/home-loan";
@@ -31,6 +33,11 @@ const HomePage = (props: Props) => {
 
   }, [tempSelectedTab]);
 
+
+  const addCustomerData = async () => {
+    const { data } = await axios.post("/customer/add", { email: customerEmail })
+    setCustomerEmail("")
+  }
   return (
     <div>
       <CarouselWrapper />
@@ -63,14 +70,16 @@ const HomePage = (props: Props) => {
         description="Lorem ipsum dolor sit amet consectetur. Diam sed mattis facilisis eget tellus dui augue sagittis ultricies. Scelerisque elit duis in tortor. Volutpat elit neque in sem nulla quam imperdiet. Mi nisl sem amet odio."
         altText="kuchh bhi rakhlo"
       >
-        <div className="flex h-12 items-center justify-start gap-3">
+        <div className="flex h-12 items-center justify-start gap-3" >
           <input
             type="email"
             placeholder="Enter your e-mail address"
             className="h-full w-[270px] rounded-lg border border-basic bg-white px-4 py-3"
+            value={customerEmail}
+            onChange={(e) => setCustomerEmail(e.target.value)}
           />
 
-          <button className="flex h-full w-12 items-center justify-center text-yellow-orange bg-black rounded-lg">
+          <button className="flex h-full w-12 items-center justify-center text-yellow-orange bg-black rounded-lg" onClick={() => addCustomerData()}>
             <Image
               src="EnvelopeOpen.svg"
               alt="Email button"
