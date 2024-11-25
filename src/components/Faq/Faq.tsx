@@ -1,6 +1,6 @@
 "use client";
 import { faqItems } from '@/testdata/faq-data';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 interface QuestionItem {
@@ -9,45 +9,40 @@ interface QuestionItem {
 }
 
 interface FaqCategory {
-    category: string;
-    questions: QuestionItem[];
+    [key: string]: QuestionItem[];
 }
-const Faq = () => {
+
+const Faq = ({ category }: { category: string }) => {
+
+    console.log("the category", category)
     const [openIndex, setOpenIndex] = useState<number | null>(null);
-    const [selectedCategory, setSelectedCategory] = useState<string>(faqItems[0].category);
+    const [filteredQuestions, setFilteredQuestions] = useState<QuestionItem[]>([]);
+
 
     const toggleOpen = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    const handleCategoryChange = (category: string) => {
-        setSelectedCategory(category);
-        setOpenIndex(null);
-    };
+    useEffect(() => {
+        setFilteredQuestions(faqItems[category]);
+    }, [])
 
-    const filteredQuestions = faqItems.find(item => item.category === selectedCategory)?.questions || [];
+
+
+    console.log("set filtered questions", filteredQuestions)
+
+
+
     return (
         <div className="flex flex-col items-center justify-center py-[100px]">
             <div className="px-15 text-center">
                 <div className="mx-auto flex flex-col items-center">
                     <p className="font-youth font-medium text-[24px] md:text-[32px] leading-[28.8px] md:leading-[38.4px]">Frequently Asked Questions</p>
-                    {/* <div className="w-full  flex justify-center gap-2 mt-4 lg:overflow-hidden overflow-y-auto scrollbar-hidden">
-                        {faqItems.map((item) => (
-                            <p
-                                key={item.category}
-                                onClick={() => handleCategoryChange(item.category)}
-                                className={`cursor-pointer rounded-70 px-3 py-1 whitespace-nowrap text-sm border ${selectedCategory === item.category ? "bg-primary border-basic" : "border-basic"
-                                    }`}
-                            >
-                                {item.category}
-                            </p>
-                        ))}
-                    </div> */}
                 </div>
             </div>
 
             <div className="w-[350px] lg:w-[870px] mt-6 lg:gap-3 gap-4 text-left flex flex-col items-center ">
-                {filteredQuestions.map((item, index) => (
+                {filteredQuestions?.map((item, index) => (
                     <div
                         key={index}
                         className={`w-[350px] lg:w-[869px] lg:rounded-2xl rounded-xl transition-all duration-300 bg-white shadow-[0_2px_6px_rgba(0,0,0,0.1)] border-basic border 

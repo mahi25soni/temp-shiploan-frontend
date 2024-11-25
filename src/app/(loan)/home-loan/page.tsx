@@ -10,6 +10,7 @@ import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import axios from "../../../../axios"
+import Faq from '@/components/Faq/Faq';
 
 
 const InputRangeData = [
@@ -127,6 +128,8 @@ const HomeLoan = () => {
         <BlogListing />
 
       </div>
+      <Faq category='HomeLoan' />
+
     </div>
 
   );

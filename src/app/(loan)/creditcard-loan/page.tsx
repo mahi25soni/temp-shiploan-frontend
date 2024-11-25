@@ -10,6 +10,7 @@ import { LenderSampleData } from '@/testdata/lender-data';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import axios from "../../../../axios"
+import Faq from '@/components/Faq/Faq';
 
 const InputRangeData = [
   {
@@ -126,8 +127,8 @@ const CreditCardLoan = () => {
 
       <div className='w-full py-[50px]'>
         <BlogListing />
-
       </div>
+      <Faq category='CreditCard' />
     </div >
 
   );

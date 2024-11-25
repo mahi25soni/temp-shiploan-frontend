@@ -11,6 +11,7 @@ import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import axios from "../../../axios"
 import DebtLoanCalculator from '@/components/CalculaterComponent/DebtLoanCalculator';
+import Faq from '@/components/Faq/Faq';
 
 
 const InputRangeData = [
@@ -168,6 +169,9 @@ const DebtConsolidation = () => {
         <BlogListing />
 
       </div>
+
+      <Faq category='DebtConsolidation' />
+
     </div>
 
   )

@@ -63,7 +63,7 @@ const LenderComparison = ({ data }: props) => {
               </td>
             </tr>
             <tr>
-              <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px]  border-t border-gray-300">{data?.[0].values?.[1].label_name}</td>
+              <td colSpan={2} className="py-3 gap-[64px] text-[14px] lg:text-[24px] lg:leading-[38.73px]  border-t border-gray-300">{data?.[0].values?.[2].label_name}</td>
             </tr>
             <tr>
               <td className="py-3 px-2 lg:px-6 font-bold text-[14px] lg:text-[24px] lg:leading-[38.73px] border-t border-gray-300">

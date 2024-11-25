@@ -90,7 +90,7 @@ const HomePage = (props: Props) => {
         </div>
 
       </HomePageComponentWrapper>
-      <Faq />
+      <Faq category="General" />
     </div>
   );
 };
