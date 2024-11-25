@@ -63,10 +63,15 @@ interface LenderInfo {
   }[]
 }
 
-const something = {
-  "first_label": "Total Saving",
-  "second_label": "Current Total Interest",
-  "third_label": "Consolidated Total Interest",
+interface SuggestedLoanInterface {
+  id: number,
+  label_name: string,
+  value: number,
+  type: string
+}
+
+interface MultiSuggestedLoanInterface {
+  SingleLoan: SuggestedLoanInterface[]
 }
 
 const DebtConsolidation = () => {
@@ -75,21 +80,28 @@ const DebtConsolidation = () => {
   const [suggestLenders, setSuggestLenders] = useState(false)
   const [lenderComparison, setLenderComparison] = useState(false)
 
-  const [suggestedLoanData, setSuggestedLoanData] = useState({
-    amount: 0,
-    tenure: 0,
-    roi: 0
-  })
+  const [suggestedLoanData, setSuggestedLoanData] = useState<MultiSuggestedLoanInterface[]>([])
   const formik = useFormik({
     initialValues: {
       loan_term: 0,
       calculators: [{ monthly_payment: 0, remaining_tenure: 0, interest: 0, current_balance: 0 }],
     },
     onSubmit: (values) => {
-      setSuggestedLoanData({
-        amount: 10000,
-        tenure: 10000,
-        roi: 10000
+
+      setSuggestedLoanData([])
+
+      values?.calculators?.map((item) => {
+        setSuggestedLoanData((prev) => [
+          ...prev,
+          {
+            SingleLoan: [
+              { id: 1, label_name: 'Current Balance', value: item?.current_balance, type: 'currency' },
+              { id: 1, label_name: 'Monthly Payment', value: item?.monthly_payment, type: 'currency' },
+              { id: 1, label_name: 'Remaining Payment Tenure', value: item?.remaining_tenure, type: 'time' },
+              { id: 1, label_name: 'Annual Interest Rate', value: item?.interest, type: 'percentage' },
+            ]
+          }
+        ])
       })
 
       setSuggestLoan(true)
@@ -154,7 +166,7 @@ const DebtConsolidation = () => {
 
 
       </PageWrapper>
-      {suggestLoan && <SuggestedLoan {...suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
+      {suggestLoan && <SuggestedLoan debtLoanData={suggestedLoanData} handleSuggestedLenders={handleSuggestedLenders} />}
 
 
 

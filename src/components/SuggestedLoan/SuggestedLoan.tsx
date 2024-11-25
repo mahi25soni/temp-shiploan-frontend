@@ -9,8 +9,12 @@ interface SuggestLoanInterface {
     value: number,
     type: string
 }
+interface MultiSuggestedLoanInterface {
+    SingleLoan: SuggestLoanInterface[]
+}
 interface SuggestedLoanProps {
-    loanData: SuggestLoanInterface[],
+    debtLoanData?: MultiSuggestedLoanInterface[],
+    loanData?: SuggestLoanInterface[],
     handleSuggestedLenders: (value: void) => void;
 }
 
@@ -31,7 +35,28 @@ const SuggestedLoan = (data: SuggestedLoanProps) => {
 
                 <div className='flex flex-col gap-4 w-full'>
 
-                    {data?.loanData?.map((loanItem, index) => {
+
+                    {data?.debtLoanData && data?.debtLoanData?.map((singleLoanData, index) => {
+                        return <div className='flex flex-col gap-4 w-full' key={index}>
+                            <div className="text-base leading-[16.94px] font-medium">
+                                Loan {index + 1}
+                            </div>
+
+                            {singleLoanData?.SingleLoan?.map((loanItem, index) => {
+                                return <div className='flex justify-between items-center' key={index}>
+                                    <div className='text-sm leading-[16.94px] text-[#48454C]'>
+                                        {loanItem?.label_name}
+                                    </div>
+                                    <div className='text-sm font-medium text-[#333333]'>
+                                        {formatNumber(loanItem?.value, loanItem?.type)}
+                                    </div>
+                                </div>
+                            })}
+
+                        </div>
+                    })}
+
+                    {data?.loanData && data?.loanData?.map((loanItem, index) => {
                         return <div className='flex justify-between items-center' key={index}>
                             <div className='text-sm leading-[16.94px] text-[#48454C]'>
                                 {loanItem?.label_name}
