@@ -49,7 +49,7 @@ const BlogListing = () => {
   return (
 
     <div className="lg:pl-[20px]">
-      <MainHeading heading="Learn more ways to save" />
+      <MainHeading heading="Learn more ways to save" align="center" />
       <div className="mt-10 scrollbar-hidden flex flex-row w-full items-center justify-start gap-8 lg:gap-[50px] overflow-auto cursor-pointer pl-4 lg:pl-0">
         {blogDataArray?.map((blog, index) => {
           const slug = blog.blog_title.toLowerCase().replace(/ /g, '-');

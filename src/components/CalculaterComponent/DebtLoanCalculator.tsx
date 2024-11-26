@@ -98,12 +98,12 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
 
 
 
-                <div className="flex justify-between items-center w-full h-12 p-2">
-                    <div className="text-sm leading-[16.94px] font-normal">
+                <div className="flex justify-between items-center w-full h-12 p-2  font-semibold">
+                    <div className="text-sm leading-[16.94px]">
                         Add another loan
                     </div>
                     <div className="" onClick={() => data?.addCalculator()}>
-                        <Image src={"/PlusCircle.svg"} width={16} height={16} alt="Dropdown Icon" />
+                        <Image src={"/PlusCircle.svg"} width={16} height={16} alt="Dropdown Icon" className="font-bold" />
 
                     </div>
                 </div>
