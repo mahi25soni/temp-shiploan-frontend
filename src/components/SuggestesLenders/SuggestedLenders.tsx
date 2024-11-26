@@ -152,11 +152,11 @@ const SingleLenderInfo = ({
                     </div>
 
                     <div className='hidden lg:flex gap-4 '>
-                        <div className={`flex justify-center items-center gap-3 p-4 description-text-18 rounded-32 cursor-pointer ${isSelected ? 'bg-black text-white' : 'bg-gray-opacity-5 text-black'}`} onClick={() => handleAddToCompareDesktop(lender)}>
+                        <div className={`flex justify-center items-center gap-3 p-4 description-text-18 rounded-32 cursor-pointer ${isSelected ? 'bg-black text-white' : 'bg-gray-opacity-5 text-black'}  transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]`} onClick={() => handleAddToCompareDesktop(lender)}>
                             <Image src='/PlusCircle.svg' width={18} height={18} alt="Add Button" className={`rounded-full ${isSelected ? "text-white bg-white" : "text-black"}`} />
                             <div>Add to Compare</div>
                         </div>
-                        <div className='bg-gray-opacity-5 flex justify-center items-center gap-3 p-4 description-text-18 rounded-32 cursor-pointer'>
+                        <div className='bg-gray-opacity-5 flex justify-center items-center gap-3 p-4 description-text-18 rounded-32 cursor-pointer  transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]'>
                             <Image src='/connect.svg' width={18} height={18} alt="Connect Button" className='rounded-full' />
 
                             <div>Visit Lender Website</div>

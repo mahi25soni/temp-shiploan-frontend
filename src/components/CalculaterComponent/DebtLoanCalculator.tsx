@@ -115,7 +115,7 @@ const DebtLoanCalculator = (data: LoanCalculatorProps) => {
 
 
             </div>
-            <button className="w-full rounded-32 bg-light-gray p-4 text-[20px] font-bold text-yellow-orange" onClick={() => data?.formik?.handleSubmit()}>
+            <button className="w-full rounded-32 bg-light-gray p-4 text-[20px] font-bold text-yellow-orange transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]" onClick={() => data?.formik?.handleSubmit()}>
                 Start Saving
             </button>
         </div>

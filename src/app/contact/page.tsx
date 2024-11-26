@@ -23,7 +23,7 @@ const Contact = () => {
                             className="h-full w-[270px] rounded-lg border border-basic bg-white px-4 py-3"
                         />
 
-                        <button className="flex h-full w-12 items-center justify-center text-yellow-orange bg-black rounded-lg ">
+                        <button className="flex h-full w-12 items-center justify-center text-yellow-orange bg-black rounded-lg  transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)] ">
                             <Image
                                 src="EnvelopeOpen.svg"
                                 alt="Email button"

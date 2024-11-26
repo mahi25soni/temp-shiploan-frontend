@@ -70,7 +70,7 @@ const CarouselWrapper = () => {
                 {slide?.desc}
               </div>
               <Link href={slides[activeSlide]?.redirectUrl} key={index} className="w-full" onClick={() => setSelectedTab(slides[activeSlide]?.tab)}>
-                <button className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange lg:w-[238px]">
+                <button className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange lg:w-[238px]  transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]">
                   {slide?.ctaName}
                 </button>
               </Link>

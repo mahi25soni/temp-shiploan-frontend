@@ -53,7 +53,7 @@ const HomePage = (props: Props) => {
             <Link key={index} href={item.link} passHref>
               <button
                 onClick={() => setTempSelectedTab(item?.tab)}
-                className="w-[200px] rounded-32 border border-light-gray py-2  text-[16px] font-bold text-light-gray"
+                className="w-[200px] rounded-32 border border-light-gray py-2  text-[16px] font-bold text-light-gray  transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]"
               >
                 {item.tab}
               </button>
@@ -79,7 +79,7 @@ const HomePage = (props: Props) => {
             onChange={(e) => setCustomerEmail(e.target.value)}
           />
 
-          <button className="flex h-full w-12 items-center justify-center text-yellow-orange bg-black rounded-lg" onClick={() => addCustomerData()}>
+          <button className="flex h-full w-12 items-center justify-center text-yellow-orange bg-black rounded-lg  transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]" onClick={() => addCustomerData()}>
             <Image
               src="EnvelopeOpen.svg"
               alt="Email button"

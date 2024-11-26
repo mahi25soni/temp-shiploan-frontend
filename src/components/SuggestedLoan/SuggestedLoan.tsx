@@ -53,7 +53,7 @@ const SuggestedLoan = (data: SuggestedLoanProps) => {
                                 onChange={(e) => setReportUserEmail(e.target.value)}
                             />
                             <button
-                                className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange"
+                                className="w-full rounded-32 bg-light-gray p-4 description-text-18  font-bold text-yellow-orange  transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]"
 
                             >
                                 Send Email
@@ -114,13 +114,13 @@ const SuggestedLoan = (data: SuggestedLoanProps) => {
 
                     <div className='flex flex-col gap-4'>
                         <button
-                            className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange border border-light-gray leading-[21.78px]"
+                            className="w-full rounded-32 bg-light-gray p-4 text-[18px] font-bold text-yellow-orange border border-light-gray leading-[21.78px] transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]"
                             onClick={() => data?.handleSuggestedLenders()}
                         >
                             Reduce Debt
                         </button>
                         <button
-                            className="w-full rounded-32 bg-transparent p-4 text-[18px] font-bold text-light-gray border border-light-gray leading-[21.78px]"
+                            className="w-full rounded-32 bg-transparent p-4 text-[18px] font-bold text-light-gray border border-light-gray leading-[21.78px] transition-all duration-400 ease-in-out  hover:scale-[102%] hover:shadow-[0_0_2px_2px_rgba(0,0,0,0.4)]"
                             onClick={() => setShowAlert(true)}
                         >
                             Get full report
