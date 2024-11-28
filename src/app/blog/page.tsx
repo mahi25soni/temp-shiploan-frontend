@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "../../../axios"
 import DOMPurify from 'dompurify';
 import { useRouter, useSearchParams } from 'next/navigation';
+import slugify from 'slugify';
 
 const CategoryOptions = [
     { label: "Home Loan", value: "Home Loan" },
@@ -58,7 +59,7 @@ const BlogBase = () => {
 
             <div className='flex flex-col   items-center gap-8  '>
                 {blogList?.map((blog, index) => {
-                    const slug = blog.title.toLowerCase().replace(/ /g, '-');
+                    const slug = slugify(blog.title, { replacement: '-', lower: true });
                     return <Link href={`/blog/${slug}`} key={index}>
                         <div className='h-max py-0 lg:py-5 w-full rounded-32 border-basic flex flex-col lg:flex-row gap-5 items-center lg:items-start cursor-pointer lg:w-[800px] ' key={index}>
                             <div className='min-h-[200px] min-w-[220px] relative'>
@@ -77,7 +78,7 @@ const BlogBase = () => {
                                 <div className="line-clamp-3 text-[18px]  break-words font-normal leading-[22px] overflow-hidden " dangerouslySetInnerHTML={{ __html: sanitizeContent(blog?.content || '') }}>
                                 </div>
                                 <div className="text-sm font-normal leading-4">
-                                    {blog?.author} {" . "} {blog?.createdAt}
+                                    {blog?.author} {" . "} {blog?.createdAt.split('T')[0]}
                                 </div>
 
                             </div>

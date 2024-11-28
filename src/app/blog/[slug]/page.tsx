@@ -1,26 +1,59 @@
+"use client"
 import MainHeading from '@/components/atoms/MainHeading'
 import { BlogSlugSampleData } from '@/testdata/blog-slug-data'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from "../../../../axios"
+import { useRouter } from 'next/router'
+import { useParams } from 'next/navigation'
 
 interface BlogPost {
-    image: string;
-    blog_title: string;
-    blog_content: string;
+    category: string;
+    bannerImage: string;
+    title: string;
+    content: string;
     author: string;
-    date: string;
+    createdAt: string;
+
 }
 
-export default async function Blog({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}) {
-    const { slug } = await params;
+export default function Blog() {
+    //const { slug } = params;
+    //const router = useRouter();
+    const { slug } = useParams();
+    console.log('slug', slug)
+    const [post, setPost] = useState<BlogPost | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-    const postData: BlogPost | undefined = BlogSlugSampleData[slug];
+    useEffect(() => {
+        if (slug) {
+            // Only trigger the fetch when the slug is available
+            const fetchBlogPost = async () => {
+                try {
+                    // Fetch blog post data by slug
+                    const { data } = await axios.get(`/blog/get-one/${slug}`);
+                    setPost(data?.data);
+                    setLoading(false);
+                } catch (err) {
+                    setError('Blog not found');
+                    setLoading(false);
+                }
+            };
 
-    if (!postData) {
+            fetchBlogPost();
+        }
+    }, [slug]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
+
+    if (!post) {
         return <div>Post not found</div>;
     }
 
@@ -33,20 +66,23 @@ export default async function Blog({
         <div className='flex flex-col px-8 lg:px-[390px] w-full items-center gap-8 bg-white'>
             <div className="relative h-[400px] w-[303px] lg:h-[716px] lg:w-[526px]">
                 <Image
-                    src={postData.image}
+                    src={post?.bannerImage}
                     layout="fill"
                     objectFit="fill"
-                    alt={postData.blog_title}
+                    alt={post?.title}
                 />
             </div>
             <div className='lg:min-w-[800px] flex flex-col w-full items-center'>
-                <MainHeading align='left' heading={postData.blog_title} />
-                <div className='h-[41px] border-y border-[#333333] border-opacity-15 w-full flex items-center'>
+                <MainHeading align='left' heading={post?.title} />
+                <div className='h-[41px] border-y border-[#333333] border-opacity-15 w-full flex items-center justify-between'>
                     <div className="text-sm font-normal leading-4 text-black opacity-50">
-                        {postData.author} {" . "} {postData.date}
+                        {post?.author} {" . "} {post?.createdAt.split('T')[0]}
+                    </div>
+                    <div className="text-sm font-normal leading-4 text-black opacity-50 ">
+                        {post?.category}
                     </div>
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: postData.blog_content }} />
+                <div className='text-left' dangerouslySetInnerHTML={{ __html: post?.content }} />
             </div>
             <div className='flex gap-2'>
                 <a href={linkedinShareURL} target="_blank" rel="noopener noreferrer">
