@@ -27,19 +27,27 @@ const BlogItem = (props: BlogItemInterface) => {
     return sanitized;
   }
   return (
-    <div className="flex h-[423px] min-w-[317px] flex-col gap-[25px] pb-3">
-      <div className="relative min-h-[314px] w-full rounded-32 border-basic">
+    <div className="flex h-max min-w-[317px] flex-col gap-[15px] pb-3 ">
+      <div className="relative min-h-[314px] w-full rounded-32 border-basic overflow-hidden">
+        {/* Background Blur and Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10"></div>
+        <div className="absolute inset-0 backdrop-blur-sm bg-black/30 mix-blend-multiply z-10"></div>
+
+        {/* Image */}
         <Image
           src={props.bannerImage}
           alt="Blog Item Background"
           fill
-          className="object-fill rounded-32"
-        ></Image>
-        <div className="absolute bottom-6 px-4 text-[30px] font-bold leading-[45px] text-white line-clamp-3 ">
+          className="object-cover rounded-32"
+        />
+
+        {/* Text */}
+        <div className="absolute bottom-6 px-4 text-[30px] font-bold leading-[45px] text-white line-clamp-3 z-20">
           {props.title}
         </div>
       </div>
-      <div className="overflow-hidden text-[18px] font-medium leading-[22px]  htmlBlogContent" dangerouslySetInnerHTML={{ __html: sanitizeContent(props?.content || '') }}>
+
+      <div className="line-clamp-2 overflow-hidden text-[18px] font-medium leading-[22px]  htmlBlogContent" dangerouslySetInnerHTML={{ __html: sanitizeContent(props?.content || '') }}>
       </div>
       <div className="text-sm font-normal leading-4">
         {props.author} {" . "} {props.createdAt.split("T")[0]}
@@ -68,7 +76,7 @@ const BlogListing = () => {
 
     <div className="lg:pl-[20px]">
       <MainHeading heading="Learn more ways to save" align="center" />
-      <div className="mt-10 scrollbar-hidden flex flex-row w-full items-center justify-start gap-8 lg:gap-[50px] overflow-auto cursor-pointer pl-4 lg:pl-0">
+      <div className="mt-10 scrollbar-hidden flex flex-row w-full items-start justify-start gap-8 lg:gap-[50px] overflow-auto cursor-pointer pl-4 lg:pl-0">
         {blogDataArray?.map((blog, index) => {
           const slug = blog.title.toLowerCase().replace(/ /g, '-');
 

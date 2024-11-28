@@ -87,6 +87,10 @@ input[type="range"]::-moz-range-thumb {
 
 .htmlBlogContent p {
   font-size: 14px;
-  line-height: 29.05px;
+  line-height: 16.91px;
   color: var(--light-black);
+}
+
+.htmlBlogContent {
+  line-clamp: 2;
 }
