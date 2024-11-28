@@ -27,8 +27,6 @@ interface BlogPost {
 }
 
 export default function Blog() {
-    //const { slug } = params;
-    //const router = useRouter();
     const { slug } = useParams();
     console.log('slug', slug)
     const router = useRouter();
@@ -40,10 +38,8 @@ export default function Blog() {
 
     useEffect(() => {
         if (slug) {
-            // Only trigger the fetch when the slug is available
             const fetchBlogPost = async () => {
                 try {
-                    // Fetch blog post data by slug
                     const { data } = await axios.get(`/blog/get-one/${slug}`);
                     setPost(data?.data);
                     setRelatedBlogs(data?.relatedBlogs);
@@ -70,10 +66,13 @@ export default function Blog() {
         return <div>Post not found</div>;
     }
 
-    const articleURL = `http://localhost:4000/blog/${slug}`;
+    const articleURL = `${window.location.origin}/blog/${slug}`;
     const linkedinShareURL = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleURL)}`;
-    const twitterDMURL = `https://twitter.com/messages/compose`;
+
+    const twitterShareURL = `https://twitter.com/intent/tweet?url=${encodeURIComponent(articleURL)}&text=Check%20this%20out!`;
+
     const facebookShareURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleURL)}`;
+
 
 
 
@@ -118,7 +117,7 @@ export default function Blog() {
                     <a href={linkedinShareURL} target="_blank" rel="noopener noreferrer">
                         <Image src={"/linkedin.png"} width={40} height={40} alt={"Share on LinkedIn"} />
                     </a>
-                    <a href={twitterDMURL} target="_blank" rel="noopener noreferrer">
+                    <a href={twitterShareURL} target="_blank" rel="noopener noreferrer">
                         <Image src={"/twitter.png"} width={40} height={40} alt={"Share on Twitter DM"} />
                     </a>
                     <a href={facebookShareURL} target="_blank" rel="noopener noreferrer">
