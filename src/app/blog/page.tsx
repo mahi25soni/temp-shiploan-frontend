@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import axios from "../../../axios"
 import DOMPurify from 'dompurify';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const CategoryOptions = [
     { label: "Home Loan", value: "Home Loan" },
@@ -27,22 +28,29 @@ const BlogBase = () => {
 
     const [blogList, setBlogList] = useState<BlogItemInterface[]>([]);
     const [categories, setCategories] = useState<string[]>([]);
+    const router = useRouter();
 
+    const searchParams = useSearchParams()
+    const category = searchParams.get('category')
+
+    console.log('category', category)
 
     useEffect(() => {
         (async () => {
-            const { data } = await axios.get("/blog/get-all");
+            const queryParam = category ? `?category=${category}` : '';
+            const { data } = await axios.get(`/blog/get-all${queryParam}`);
             setBlogList(data?.data);
         })()
-    }, [])
+    }, [category])
 
     function sanitizeContent(content: string) {
         const sanitized = DOMPurify.sanitize(content, { FORBID_TAGS: ['img'] });
         return sanitized;
     }
 
-    const handleCategoryClick = (category: string) => {
-
+    const handleCategoryClick = (newCategory: string) => {
+        const url = newCategory ? `/blog?category=${newCategory}` : '/blog';
+        router.push(url);
     }
     return (
 
@@ -84,8 +92,8 @@ const BlogBase = () => {
                     <div className='font-bold text-3xl'>Browse more categories</div>
 
                     <div className='flex flex-col gap-2'>
-                        {CategoryOptions.map((category, index) => {
-                            return <div key={index} className='text-base font-normal cursor-pointer hover:text-red-600' onClick={() => handleCategoryClick(category?.label)}>{category.label}</div>
+                        {CategoryOptions.map((categoryItem, index) => {
+                            return <div key={index} className={`text-base  cursor-pointer hover:text-red-600 ${categoryItem?.label === category ? "font-bold" : "font-normal"}`} onClick={() => handleCategoryClick(categoryItem?.label)}>{categoryItem.label}</div>
                         })}
 
 
