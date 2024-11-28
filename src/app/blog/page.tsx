@@ -57,12 +57,12 @@ const BlogBase = () => {
 
             {blogList?.length === 0 && <div className='text-3xl font-bold'>No Blogs Found</div>}
 
-            <div className='flex flex-col   items-center gap-8  '>
+            <div className='flex flex-col  items-start lg:items-center gap-8  '>
                 {blogList?.map((blog, index) => {
                     const slug = slugify(blog.title, { replacement: '-', lower: true });
                     return <Link href={`/blog/${slug}`} key={index}>
-                        <div className='h-max py-0 lg:py-5 w-full rounded-32 border-basic flex flex-col lg:flex-row gap-5 items-center lg:items-start cursor-pointer lg:w-[800px] ' key={index}>
-                            <div className='min-h-[200px] min-w-[220px] relative'>
+                        <div className='h-max py-0 lg:py-5 w-full rounded-32 border-basic flex flex-row gap-2 lg:gap-5 items-start  cursor-pointer lg:w-[800px]' key={index}>
+                            <div className='lg:min-h-[200px] lg:min-w-[220px] min-w-20 min-h-20 relative'>
                                 <Image
                                     src={blog?.bannerImage}
                                     alt="Blog Item Background"
@@ -70,14 +70,14 @@ const BlogBase = () => {
                                     className="rounded-xl"
                                 ></Image>
                             </div>
-                            <div className='flex flex-col gap-4 text-center lg:text-left h-max lg:h-[200px]'>
-                                <div className="bottom-6 text-[30px] font-bold lg:leading-[45px] leading-[34px]  line-clamp-3">
+                            <div className='flex flex-col gap-2 lg:gap-4 text-left lg:text-left h-max lg:h-[200px]'>
+                                <div className="bottom-6 line-clamp-1  text-base font-bold lg:text-[30px] lg:leading-[45px] leading-[16.91px]  lg:line-clamp-3">
                                     {blog?.title}
                                 </div>
 
-                                <div className="line-clamp-3 text-[18px]  break-words font-normal leading-[22px] overflow-hidden " dangerouslySetInnerHTML={{ __html: sanitizeContent(blog?.content || '') }}>
+                                <div className="line-clamp-2 lg:line-clamp-3 lg:text-[18px]  text-xs leading-[14px] break-words font-normal lg:leading-[22px] overflow-hidden " dangerouslySetInnerHTML={{ __html: sanitizeContent(blog?.content || '') }}>
                                 </div>
-                                <div className="text-sm font-normal leading-4">
+                                <div className="lg:text-sm font-normal lg:leading-4 text-xs">
                                     {blog?.author} {" . "} {blog?.createdAt.split('T')[0]}
                                 </div>
 

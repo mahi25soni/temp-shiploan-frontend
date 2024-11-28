@@ -101,7 +101,7 @@ export default function Blog() {
                         alt={post?.title}
                     />
                 </div>
-                <div className='lg:w-[800px] flex flex-col w-full items-start'>
+                <div className='lg:w-[800px] flex flex-col w-full items-start px-8 lg:px-0'>
                     <MainHeading align='left' heading={post?.title} />
                     <div className='h-[41px] border-y border-[#333333] border-opacity-15 w-full flex items-center justify-between'>
                         <div className="text-sm font-normal leading-4 text-black opacity-50">
@@ -111,7 +111,7 @@ export default function Blog() {
                             {post?.category}
                         </div>
                     </div>
-                    <div className='text-left' dangerouslySetInnerHTML={{ __html: post?.content }} />
+                    <div className='text-left py-5' dangerouslySetInnerHTML={{ __html: post?.content }} />
                 </div>
                 <div className='flex gap-2 '>
                     <a href={linkedinShareURL} target="_blank" rel="noopener noreferrer">
@@ -144,13 +144,14 @@ export default function Blog() {
 
                     <div className='flex flex-col gap-3'>
                         {relatedBlogs?.map((blog, index) => {
-                            return <div className='flex flex-col gap-0 cursor-pointer transition-all duration-300 ease-in-out border-b border-basic hover:scale-[103%]' key={index} onClick={() => handleOpenBlog(blog?.title)}>
-                                <div className='text-gray-400 text-sm'>
-                                    {blog?.createdAt.split('T')[0]} {" by "} {blog?.author}
-                                </div>
-                                <div className=''>
+                            return <div className='flex flex-col gap-0 cursor-pointer transition-all duration-300 ease-in-out border-b border-basic hover:scale-[103%] ' key={index} onClick={() => handleOpenBlog(blog?.title)}>
+                                <div className='hover:underline'>
                                     {blog?.title}
                                 </div>
+                                <div className='text-gray-400 lg:text-sm text-xs'>
+                                    {blog?.createdAt.split('T')[0]} {" by "} {blog?.author}
+                                </div>
+
                             </div>
                         })}
                     </div>
