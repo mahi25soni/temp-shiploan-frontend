@@ -17,7 +17,7 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
                 <BrownLine />
             </div>
 
-            <BlogListing />
+            {/* <BlogListing /> */}
 
             <HomePageComponentWrapper
                 bgColor={"#D1E6DF"}
