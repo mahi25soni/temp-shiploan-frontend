@@ -2,7 +2,7 @@
 import MainHeading from '@/components/atoms/MainHeading'
 import { BlogSlugSampleData } from '@/testdata/blog-slug-data'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import axios from "../../../../axios"
 import { useRouter } from 'next/navigation'
 import { useParams } from 'next/navigation'
@@ -91,73 +91,76 @@ export default function Blog() {
 
     return (
 
-        <div className='relative flex flex-col lg:flex-row gap-10 justify-center  items-center lg:items-start mt-[125px] w-full lg:px-8 bg-white'>
-            <div className='flex flex-col  items-center gap-8 bg-white lg:px-8'>
-                <div className="relative h-[400px] w-[303px] lg:h-[516px] lg:w-[526px]">
-                    <Image
-                        src={post?.bannerImage}
-                        layout="fill"
-                        objectFit="fill"
-                        alt={post?.title}
-                    />
-                </div>
-                <div className='lg:w-[800px] flex flex-col w-full items-start px-8 lg:px-0'>
-                    <MainHeading align='left' heading={post?.title} />
-                    <div className='h-[41px] border-y border-[#333333] border-opacity-15 w-full flex items-center justify-between'>
-                        <div className="text-sm font-normal leading-4 text-black opacity-50">
-                            {post?.author} {" . "} {post?.createdAt.split('T')[0]}
-                        </div>
-                        <div className="text-sm font-normal leading-4 text-black opacity-50 ">
-                            {post?.category}
-                        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+
+            <div className='relative flex flex-col lg:flex-row gap-10 justify-center  items-center lg:items-start mt-[125px] w-full lg:px-8 bg-white'>
+                <div className='flex flex-col  items-center gap-8 bg-white lg:px-8'>
+                    <div className="relative h-[400px] w-[303px] lg:h-[516px] lg:w-[526px]">
+                        <Image
+                            src={post?.bannerImage}
+                            layout="fill"
+                            objectFit="fill"
+                            alt={post?.title}
+                        />
                     </div>
-                    <div className='text-left py-5' dangerouslySetInnerHTML={{ __html: post?.content }} />
-                </div>
-                <div className='flex gap-2 '>
-                    <a href={linkedinShareURL} target="_blank" rel="noopener noreferrer">
-                        <Image src={"/linkedin.png"} width={40} height={40} alt={"Share on LinkedIn"} />
-                    </a>
-                    <a href={twitterShareURL} target="_blank" rel="noopener noreferrer">
-                        <Image src={"/twitter.png"} width={40} height={40} alt={"Share on Twitter DM"} />
-                    </a>
-                    <a href={facebookShareURL} target="_blank" rel="noopener noreferrer">
-                        <Image src={"/facebook.png"} width={40} height={40} alt={"Share on Facebook"} />
-                    </a>
-                </div>
-            </div>
-
-            <div className='sticky top-[125px] flex flex-col gap-10 px-8 lg:px-0 '>
-                <div className='flex flex-col gap-8'>
-                    <div className='font-bold text-3xl'>Browse more categories</div>
-
-                    <div className='flex flex-col gap-2'>
-                        {CategoryOptions.map((categoryItem, index) => {
-                            return <div key={index} className={`text-base  cursor-pointer hover:text-red-600`} onClick={() => handleCategoryClick(categoryItem?.label)}>{categoryItem.label}</div>
-                        })}
-
-
-                    </div>
-                </div>
-
-                <div className='flex flex-col gap-8'>
-                    <div className='font-bold text-3xl'>More blogs to read</div>
-
-                    <div className='flex flex-col gap-3'>
-                        {relatedBlogs?.map((blog, index) => {
-                            return <div className='flex flex-col gap-0 cursor-pointer transition-all duration-300 ease-in-out border-b border-basic hover:scale-[103%] ' key={index} onClick={() => handleOpenBlog(blog?.title)}>
-                                <div className='hover:underline'>
-                                    {blog?.title}
-                                </div>
-                                <div className='text-gray-400 lg:text-sm text-xs'>
-                                    {blog?.createdAt.split('T')[0]} {" by "} {blog?.author}
-                                </div>
-
+                    <div className='lg:w-[800px] flex flex-col w-full items-start px-8 lg:px-0'>
+                        <MainHeading align='left' heading={post?.title} />
+                        <div className='h-[41px] border-y border-[#333333] border-opacity-15 w-full flex items-center justify-between'>
+                            <div className="text-sm font-normal leading-4 text-black opacity-50">
+                                {post?.author} {" . "} {post?.createdAt.split('T')[0]}
                             </div>
-                        })}
+                            <div className="text-sm font-normal leading-4 text-black opacity-50 ">
+                                {post?.category}
+                            </div>
+                        </div>
+                        <div className='text-left py-5' dangerouslySetInnerHTML={{ __html: post?.content }} />
+                    </div>
+                    <div className='flex gap-2 '>
+                        <a href={linkedinShareURL} target="_blank" rel="noopener noreferrer">
+                            <Image src={"/linkedin.png"} width={40} height={40} alt={"Share on LinkedIn"} />
+                        </a>
+                        <a href={twitterShareURL} target="_blank" rel="noopener noreferrer">
+                            <Image src={"/twitter.png"} width={40} height={40} alt={"Share on Twitter DM"} />
+                        </a>
+                        <a href={facebookShareURL} target="_blank" rel="noopener noreferrer">
+                            <Image src={"/facebook.png"} width={40} height={40} alt={"Share on Facebook"} />
+                        </a>
+                    </div>
+                </div>
+
+                <div className='sticky top-[125px] flex flex-col gap-10 px-8 lg:px-0 '>
+                    <div className='flex flex-col gap-8'>
+                        <div className='font-bold text-3xl'>Browse more categories</div>
+
+                        <div className='flex flex-col gap-2'>
+                            {CategoryOptions.map((categoryItem, index) => {
+                                return <div key={index} className={`text-base  cursor-pointer hover:text-red-600`} onClick={() => handleCategoryClick(categoryItem?.label)}>{categoryItem.label}</div>
+                            })}
+
+
+                        </div>
+                    </div>
+
+                    <div className='flex flex-col gap-8'>
+                        <div className='font-bold text-3xl'>More blogs to read</div>
+
+                        <div className='flex flex-col gap-3'>
+                            {relatedBlogs?.map((blog, index) => {
+                                return <div className='flex flex-col gap-0 cursor-pointer transition-all duration-300 ease-in-out border-b border-basic hover:scale-[103%] ' key={index} onClick={() => handleOpenBlog(blog?.title)}>
+                                    <div className='hover:underline'>
+                                        {blog?.title}
+                                    </div>
+                                    <div className='text-gray-400 lg:text-sm text-xs'>
+                                        {blog?.createdAt.split('T')[0]} {" by "} {blog?.author}
+                                    </div>
+
+                                </div>
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Suspense>
 
     );
 };
