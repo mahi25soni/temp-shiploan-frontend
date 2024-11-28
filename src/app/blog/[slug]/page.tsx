@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "../../../../axios"
 import { useRouter } from 'next/navigation'
 import { useParams } from 'next/navigation'
+import slugify from 'slugify'
 
 const CategoryOptions = [
     { label: "Home Loan", value: "Home Loan" },
@@ -35,6 +36,7 @@ export default function Blog() {
     const [post, setPost] = useState<BlogPost | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [relatedBlogs, setRelatedBlogs] = useState<BlogPost[]>([]);
 
     useEffect(() => {
         if (slug) {
@@ -44,6 +46,7 @@ export default function Blog() {
                     // Fetch blog post data by slug
                     const { data } = await axios.get(`/blog/get-one/${slug}`);
                     setPost(data?.data);
+                    setRelatedBlogs(data?.relatedBlogs);
                     setLoading(false);
                 } catch (err) {
                     setError('Blog not found');
@@ -77,6 +80,14 @@ export default function Blog() {
     const handleCategoryClick = (newCategory: string) => {
         const url = newCategory ? `/blog?category=${newCategory}` : '/blog';
         router.push(url);
+    }
+
+    const handleOpenBlog = (title: string) => {
+
+        const newSlug = slugify(title, {
+            replacement: '-', lower: true
+        })
+        router.push(`/blog/${newSlug}`);
     }
 
     return (
@@ -129,8 +140,21 @@ export default function Blog() {
                     </div>
                 </div>
 
-                <div >
+                <div className='flex flex-col gap-8'>
+                    <div className='font-bold text-3xl'>More blogs to read</div>
 
+                    <div className='flex flex-col gap-3'>
+                        {relatedBlogs?.map((blog, index) => {
+                            return <div className='flex flex-col gap-0 cursor-pointer transition-all duration-300 ease-in-out border-b border-basic hover:scale-[103%]' key={index} onClick={() => handleOpenBlog(blog?.title)}>
+                                <div className='text-gray-400 text-sm'>
+                                    {blog?.createdAt.split('T')[0]} {" by "} {blog?.author}
+                                </div>
+                                <div className=''>
+                                    {blog?.title}
+                                </div>
+                            </div>
+                        })}
+                    </div>
                 </div>
             </div>
         </div>
