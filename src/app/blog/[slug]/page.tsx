@@ -91,7 +91,7 @@ export default function Blog() {
 
     return (
 
-        <div className='flex flex-col lg:flex-row gap-10 justify-center  items-center lg:items-start mt-[125px] w-full lg:px-8 bg-white'>
+        <div className='relative flex flex-col lg:flex-row gap-10 justify-center  items-center lg:items-start mt-[125px] w-full lg:px-8 bg-white'>
             <div className='flex flex-col  items-center gap-8 bg-white lg:px-8'>
                 <div className="relative h-[400px] w-[303px] lg:h-[516px] lg:w-[526px]">
                     <Image
@@ -126,7 +126,7 @@ export default function Blog() {
                 </div>
             </div>
 
-            <div className='flex flex-col gap-10 px-8 lg:px-0 '>
+            <div className='sticky top-[125px] flex flex-col gap-10 px-8 lg:px-0 '>
                 <div className='flex flex-col gap-8'>
                     <div className='font-bold text-3xl'>Browse more categories</div>
 
