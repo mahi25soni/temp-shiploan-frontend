@@ -92,8 +92,8 @@ export default function Blog() {
 
     return (
 
-        <div className='flex flex-row gap-10 justify-center items-start mt-[125px] px-8 bg-white'>
-            <div className='flex flex-col px-8  items-center gap-8 bg-white'>
+        <div className='flex flex-col lg:flex-row gap-10 justify-center  items-center lg:items-start mt-[125px] w-full lg:px-8 bg-white'>
+            <div className='flex flex-col  items-center gap-8 bg-white lg:px-8'>
                 <div className="relative h-[400px] w-[303px] lg:h-[516px] lg:w-[526px]">
                     <Image
                         src={post?.bannerImage}
@@ -102,7 +102,7 @@ export default function Blog() {
                         alt={post?.title}
                     />
                 </div>
-                <div className='lg:w-[800px] flex flex-col w-full items-center'>
+                <div className='lg:w-[800px] flex flex-col w-full items-start'>
                     <MainHeading align='left' heading={post?.title} />
                     <div className='h-[41px] border-y border-[#333333] border-opacity-15 w-full flex items-center justify-between'>
                         <div className="text-sm font-normal leading-4 text-black opacity-50">
@@ -114,7 +114,7 @@ export default function Blog() {
                     </div>
                     <div className='text-left' dangerouslySetInnerHTML={{ __html: post?.content }} />
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex gap-2 '>
                     <a href={linkedinShareURL} target="_blank" rel="noopener noreferrer">
                         <Image src={"/linkedin.png"} width={40} height={40} alt={"Share on LinkedIn"} />
                     </a>
@@ -127,7 +127,7 @@ export default function Blog() {
                 </div>
             </div>
 
-            <div className='flex flex-col gap-10 '>
+            <div className='flex flex-col gap-10 px-8 lg:px-0 '>
                 <div className='flex flex-col gap-8'>
                     <div className='font-bold text-3xl'>Browse more categories</div>
 

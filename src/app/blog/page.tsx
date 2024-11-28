@@ -34,8 +34,6 @@ const BlogBase = () => {
     const searchParams = useSearchParams()
     const category = searchParams.get('category')
 
-    console.log('category', category)
-
     useEffect(() => {
         (async () => {
             const queryParam = category ? `?category=${category}` : '';
@@ -55,7 +53,9 @@ const BlogBase = () => {
     }
     return (
 
-        <div className='flex flex-row gap-10 justify-center items-start mt-[125px] px-8 bg-white'>
+        <div className='flex flex-col lg:flex-row gap-10 justify-center  items-center lg:items-start mt-[125px] px-8 bg-white'>
+
+            {blogList?.length === 0 && <div className='text-3xl font-bold'>No Blogs Found</div>}
 
             <div className='flex flex-col   items-center gap-8  '>
                 {blogList?.map((blog, index) => {
@@ -70,7 +70,7 @@ const BlogBase = () => {
                                     className="rounded-xl"
                                 ></Image>
                             </div>
-                            <div className='flex flex-col gap-4 text-center lg:text-left h-[200px]'>
+                            <div className='flex flex-col gap-4 text-center lg:text-left h-max lg:h-[200px]'>
                                 <div className="bottom-6 text-[30px] font-bold lg:leading-[45px] leading-[34px]  line-clamp-3">
                                     {blog?.title}
                                 </div>
